@@ -1,0 +1,24 @@
+.navbar-nav {
+
+    &__link {
+        position: relative;
+        display: inline-block;
+        margin: 5px 10px;
+        text-decoration: none;
+        color: black;
+
+        &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            background-color: black;
+            height: 1px;
+            width: 0;
+            transition: width 300ms;
+        }
+        &:hover:after {
+            width: 100%;
+        }
+    }
+}
