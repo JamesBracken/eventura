@@ -20,6 +20,11 @@ public class AddressController {
         return addressService.createAddress(address);
     }
 
+    @PutMapping("/{id}")
+    public Address UpdateAddress(@PathVariable Long id, @RequestBody Address address) {
+        return addressService.updateAddress(id,address);
+    }
+
     @GetMapping
     public List<Address> getAllAddress() {
         return addressService.getAllAddresses();

@@ -24,6 +24,7 @@ public class UserService {
     }
 
     // Create
+    @Transactional
     public User createUser(User user) {
         // Basic Validation
         if (!(StringUtils.hasText(user.getFirstName()) && StringUtils.hasText(user.getLastName())) || !StringUtils.hasText(user.getEmail())) {
@@ -33,7 +34,7 @@ public class UserService {
             throw new IllegalArgumentException("Email already in use:" + user.getEmail());
         }
         Address address = addressRepo.findById(user.getAddress().getId()).orElseThrow(() -> new RuntimeException("Address " + user.getAddress().getId() + " not found"));
-        user.setAddress(user.getAddress());
+        user.setAddress(address);
         user.setCreatedDate(LocalDateTime.now());  // default the created datetime
         return userRepo.save(user);
     }
