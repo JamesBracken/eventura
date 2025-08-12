@@ -1,11 +1,20 @@
 @use "../abstracts/mixins";
+
+// Resetting base styles for typography here
+
+ul,
+li {
+    list-style-type: none;
+    text-decoration: none;
+}
+
 // Global variables
 
 // Font families
 /* Headings */
-// $text-primary: 
+$text-primary: "Montserrat", sans-serif;
 /* Body text */
-// $text-secondary:
+$text-secondary: "Inter", sans-serif;
 
 // Tweak font sizes later on
 
@@ -57,88 +66,88 @@ h1 {
     font-size: $fs-heading-1;
     font-family: $text-primary;
 
-    @include mixins.small-screen() {
-        font-size: $fs-heading-1-sm;
-    }
-    @include mixins.medium-screen() {
-        font-size: $fs-heading-1-md;
-    }
-    @include mixins.large-screen() {
-        font-size: $fs-heading-1-lg;
-    }
+    // @include mixins.small-screen() {
+    //     font-size: $fs-heading-1-sm;
+    // }
+    // @include mixins.medium-screen() {
+    //     font-size: $fs-heading-1-md;
+    // }
+    // @include mixins.large-screen() {
+    //     font-size: $fs-heading-1-lg;
+    // }
 }
 
 h2 {
     font-size: $fs-heading-2;
     font-family: $text-primary;
 
-    @include mixins.small-screen() {
-        font-size: $fs-heading-2-sm;
-    }
-    @include mixins.medium-screen() {
-        font-size: $fs-heading-2-md;
-    }
-    @include mixins.large-screen() {
-        font-size: $fs-heading-2-lg;
-    }
+    // @include mixins.small-screen() {
+    //     font-size: $fs-heading-2-sm;
+    // }
+    // @include mixins.medium-screen() {
+    //     font-size: $fs-heading-2-md;
+    // }
+    // @include mixins.large-screen() {
+    //     font-size: $fs-heading-2-lg;
+    // }
 }
 
 h3 {
     font-size: $fs-heading-3;
     font-family: $text-primary;
 
-    @include mixins.small-screen() {
-        font-size: $fs-heading-3-sm;
-    }
-    @include mixins.medium-screen() {
-        font-size: $fs-heading-3-md;
-    }
-    @include mixins.large-screen() {
-        font-size: $fs-heading-3-lg;
-    }
+    // @include mixins.small-screen() {
+    //     font-size: $fs-heading-3-sm;
+    // }
+    // @include mixins.medium-screen() {
+    //     font-size: $fs-heading-3-md;
+    // }
+    // @include mixins.large-screen() {
+    //     font-size: $fs-heading-3-lg;
+    // }
 }
 
 h4 {
     font-size: $fs-heading-4;
     font-family: $text-primary;
 
-    @include mixins.small-screen() {
-        font-size: $fs-heading-4-sm;
-    }
-    @include mixins.medium-screen() {
-        font-size: $fs-heading-4-md;
-    }
-    @include mixins.large-screen() {
-        font-size: $fs-heading-4-lg;
-    }
+    // @include mixins.small-screen() {
+    //     font-size: $fs-heading-4-sm;
+    // }
+    // @include mixins.medium-screen() {
+    //     font-size: $fs-heading-4-md;
+    // }
+    // @include mixins.large-screen() {
+    //     font-size: $fs-heading-4-lg;
+    // }
 }
 
 .subheading {
     font-family: $text-primary;
     font-size: $fs-subheading;
 
-    @include mixins.small-screen() {
-        font-size: $fs-subheading-sm;
-    }
-    @include mixins.medium-screen() {
-        font-size: $fs-subheading-md;
-    }
-    @include mixins.large-screen() {
-        font-size: $fs-subheading-lg;
-    }
+    // @include mixins.small-screen() {
+    //     font-size: $fs-subheading-sm;
+    // }
+    // @include mixins.medium-screen() {
+    //     font-size: $fs-subheading-md;
+    // }
+    // @include mixins.large-screen() {
+    //     font-size: $fs-subheading-lg;
+    // }
 }
 
-p {
+p, a {
     font-size: $fs-body;
     font-family: $text-secondary;
 
-    @include mixins.small-screen() {
-        font-size: $fs-body-sm;
-    }
-    @include mixins.medium-screen() {
-        font-size: $fs-body-md;
-    }
-    @include mixins.large-screen() {
-        font-size: $fs-body-lg;
-    }
+    // @include mixins.small-screen() {
+    //     font-size: $fs-body-sm;
+    // }
+    // @include mixins.medium-screen() {
+    //     font-size: $fs-body-md;
+    // }
+    // @include mixins.large-screen() {
+    //     font-size: $fs-body-lg;
+    // }
 }
