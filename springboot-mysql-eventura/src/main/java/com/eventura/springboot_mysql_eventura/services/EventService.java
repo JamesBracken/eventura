@@ -87,23 +87,42 @@ public class EventService {
         if (StringUtils.hasText(updatedEvent.getEventDescription())) {
             existing.setEventDescription(updatedEvent.getEventDescription());
         }
-        if (updatedEvent.getOrganiser() != null) {
-            existing.setOrganiser(updatedEvent.getOrganiser());
+
+
+        if (updatedEvent.getOrganiser() != null && StringUtils.hasText(updatedEvent.getOrganiser().getEmail())) {
+            User organiser = userRepo.findByEmail(updatedEvent.getOrganiser().getEmail())
+                    .orElseThrow(() -> new RuntimeException(
+                            "Organiser with email " + updatedEvent.getOrganiser().getEmail() + " not found"));
+            existing.setOrganiser(organiser);
         }
-        if (updatedEvent.getAddress() != null) {
-            existing.setAddress(updatedEvent.getAddress());
+
+
+        if (updatedEvent.getCreatedBy() != null && StringUtils.hasText(updatedEvent.getCreatedBy().getEmail())) {
+            User creator = userRepo.findByEmail(updatedEvent.getCreatedBy().getEmail())
+                    .orElseThrow(() -> new RuntimeException(
+                            "CreatedBy user with email " + updatedEvent.getCreatedBy().getEmail() + " not found"));
+            existing.setCreatedBy(creator);
         }
+
+
+        if (updatedEvent.getAddress() != null && updatedEvent.getAddress().getId() != null) {
+            Address address = addressRepo.findById(updatedEvent.getAddress().getId())
+                    .orElseThrow(() -> new RuntimeException(
+                            "Address with ID " + updatedEvent.getAddress().getId() + " not found"));
+            existing.setAddress(address);
+        }
+
         if (updatedEvent.getMaxCapacity() != null) {
             existing.setMaxCapacity(updatedEvent.getMaxCapacity());
         }
         if (updatedEvent.getCostPerPerson() != null) {
             existing.setCostPerPerson(updatedEvent.getCostPerPerson());
         }
+
         existing.setUpdatedDate(LocalDateTime.now());
 
         return eventRepo.save(existing);
     }
-
     // DELETE
     public void deleteEvent(Long id) {
         if (!eventRepo.existsById(id)) {
