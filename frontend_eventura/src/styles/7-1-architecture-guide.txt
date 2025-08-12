@@ -1,0 +1,26 @@
+This file is used as a guide for how to organise and navigate
+the structure of SASS 7-1 Architecture
+
+Great article on this -- https://medium.com/@diyorbekjuraev77/be-a-master-at-creating-the-7-1-sass-pattern-776fdfb5a3b1
+
+The below folders should be contained within the styles folder
+When naming files add an underscore prior to the filename to remove it from
+scss compilation ex. _modal.scss
+
+abstracts
+- Variables, mixins, colors, functions
+base
+- Reset, typography, normalize
+components
+- Button, card, navbar, modal, etc.
+layout  (In this instance a layout folder was not necessary as 
+bootstrap is already taking care of this)
+- Grid, header, footer, nav
+pages ( As this is a 1 page project there is no need for a pages
+folder )
+- Page specific styles product, blog, login, signup
+themes
+- Theme files like dark.scss or light.scss
+vendors
+- 3rd party styles like bootstrap, jquery etc.
+main.scss

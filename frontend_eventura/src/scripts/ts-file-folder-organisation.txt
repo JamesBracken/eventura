@@ -1,0 +1,39 @@
+This is a quick instruction on how to structure and organise a .ts file 
+
+From top to bottom
+
+1. Imports
+2. Type declarations, interfaces, enums
+3. Global constant variables
+4. Global let variables
+5. Type guards
+6. Utility functions (Pure functions)
+7. Core functions
+8. Event listeners
+9. Initialisation / Code which does not conform to other categories
+
+This is a quick instruction on how to organise and separate typescript
+folders and file contents
+
+Within the src file
+
+components
+- Reusable UI or logic units
+
+services
+- API calls, business logic
+
+models
+- Types and interfaces
+
+utils
+- Helper/support functions, styling and general UI
+
+pages
+- Page level components (More react specific)
+
+main.ts/index.ts
+- main file 
+
+Test folder must be contained at the application/root level(sorta depends 
+on the project setup)
