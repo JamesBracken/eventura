@@ -63,6 +63,18 @@ public class EventService {
         if (event.getCreatedDate() == null) {
             event.setCreatedDate(LocalDateTime.now());
         }
+
+        if (event.getStartDate() == null) {
+            throw new IllegalArgumentException("Start date is required");
+        }
+
+        if (event.getEndDate() == null) {
+            throw new IllegalArgumentException("End date is required");
+        }
+
+        if (event.getEndDate().isBefore(event.getStartDate())) {
+            throw new IllegalArgumentException("End date cannot be before start date");
+        }
         return eventRepo.save(event);
     }
 
@@ -118,7 +130,18 @@ public class EventService {
         if (updatedEvent.getCostPerPerson() != null) {
             existing.setCostPerPerson(updatedEvent.getCostPerPerson());
         }
+        if (updatedEvent.getStartDate() != null) {
+            existing.setStartDate(updatedEvent.getStartDate());
+        }
 
+        if (updatedEvent.getEndDate() != null) {
+            existing.setEndDate(updatedEvent.getEndDate());
+        }
+
+        if (existing.getStartDate() != null && existing.getEndDate() != null &&
+                existing.getEndDate().isBefore(existing.getStartDate())) {
+            throw new IllegalArgumentException("End date cannot be before start date");
+        }
         existing.setUpdatedDate(LocalDateTime.now());
 
         return eventRepo.save(existing);

@@ -4,4 +4,5 @@ import com.eventura.springboot_mysql_eventura.models.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AddressRepository extends JpaRepository<Address, Long> {
+    boolean existsByAddressLine1AndPostcode(String addressLine1, String postcode);
 }

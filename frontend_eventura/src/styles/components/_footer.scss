@@ -1,10 +1,15 @@
-
+@use "../abstracts/palette";
 
 .footer {
-
     margin-top: auto;
 
     &__icon {
         font-size: 40px;
+        color: palette.$color-light-grey;
+        
+        &:hover {
+            color: palette.$color-primary;
+            transition: 300ms ease-in-out;
+        }
     }
 }

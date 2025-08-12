@@ -22,9 +22,9 @@ public class AddressService {
         if (!(StringUtils.hasText(address.getPostcode()) && StringUtils.hasText(address.getAddressLine1()))) {
             throw new IllegalArgumentException("Address line 1 or postcode are required");
         }
-//        if (addressRepo.existsByAddressline1AndPostcode(address.getAddressLine1(), address.getPostcode())) {
-//            throw new IllegalArgumentException("Address line 1 and postcode already in use:" + address.getAddressLine1() + address.getPostcode());
-//        }
+        if (addressRepo.existsByAddressLine1AndPostcode(address.getAddressLine1(), address.getPostcode())) {
+            throw new IllegalArgumentException("Address line 1 and postcode already in use:" + address.getAddressLine1() + address.getPostcode());
+        }
         return addressRepo.save(address);
     }
 

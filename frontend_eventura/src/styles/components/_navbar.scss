@@ -1,11 +1,14 @@
 .navbar-nav {
 
+    display: flex;
+
     &__link {
         position: relative;
         display: inline-block;
-        margin: 5px 10px;
+        margin: 0px 15px;
         text-decoration: none;
         color: black;
+        display: inline;
 
         &:after {
             content: "";
@@ -21,5 +24,10 @@
         &:hover:after {
             width: 100%;
         }
+    }
+
+    &__list {
+        display: block;
+        padding: 5px 0px;
     }
 }

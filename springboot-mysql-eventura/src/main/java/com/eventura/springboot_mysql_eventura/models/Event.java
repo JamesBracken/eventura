@@ -33,8 +33,26 @@ public class Event {
 
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
 
     // Getters and setters...
+
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
+    }
+
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
