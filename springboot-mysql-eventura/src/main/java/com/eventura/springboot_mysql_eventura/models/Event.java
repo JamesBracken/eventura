@@ -1,113 +1,71 @@
 package com.eventura.springboot_mysql_eventura.models;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-import javax.annotation.processing.Generated;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity(name = "Events")
+@Entity
+@Table(name = "Event")
 public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Long id;
+    @Column(name = "UniqueID")
+    private Long id; // maps to UniqueID in ERD
 
     private String eventName;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
-    private String hostContact;
-    private String hostEmail;
-    private String contactPerson;
+    private String eventDescription;
 
-    private LocalDateTime createDate;
+    @ManyToOne
+    @JoinColumn(name = "organiser")
+    private User organiser; // maps organiser to a User entity
+
+    private Integer noOfEventDates;
+    private Integer maxCapacity;
+    private Double costPerPerson;
+
+    @ManyToOne
+    @JoinColumn(name = "address")
+    private Address address; // link to Address entity
+
+    @ManyToOne
+    @JoinColumn(name = "createdBy")
+    private User createdBy;
+
+    private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
-    private LocalDateTime deleteDate;
 
-    // Getters and setters for above variables
+    // Getters and setters...
 
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public Long getId() {
-        return id;
-    }
+    public String getEventName() { return eventName; }
+    public void setEventName(String eventName) { this.eventName = eventName; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getEventDescription() { return eventDescription; }
+    public void setEventDescription(String eventDescription) { this.eventDescription = eventDescription; }
 
-    public String getEventName() {
-        return eventName;
-    }
+    public User getOrganiser() { return organiser; }
+    public void setOrganiser(User organiser) { this.organiser = organiser; }
 
-    public void setEventName(String eventName) {
-        this.eventName = eventName;
-    }
+    public Integer getNoOfEventDates() { return noOfEventDates; }
+    public void setNoOfEventDates(Integer noOfEventDates) { this.noOfEventDates = noOfEventDates; }
 
-    public LocalDateTime getStartDate() {
-        return startDate;
-    }
+    public Integer getMaxCapacity() { return maxCapacity; }
+    public void setMaxCapacity(Integer maxCapacity) { this.maxCapacity = maxCapacity; }
 
-    public void setStartDate(LocalDateTime startDate) {
-        this.startDate = startDate;
-    }
+    public Double getCostPerPerson() { return costPerPerson; }
+    public void setCostPerPerson(Double costPerPerson) { this.costPerPerson = costPerPerson; }
 
-    public LocalDateTime getEndDate() {
-        return endDate;
-    }
+    public Address getAddress() { return address; }
+    public void setAddress(Address address) { this.address = address; }
 
-    public void setEndDate(LocalDateTime endDate) {
-        this.endDate = endDate;
-    }
+    public User getCreatedBy() { return createdBy; }
+    public void setCreatedBy(User createdBy) { this.createdBy = createdBy; }
 
-    public String getHostContact() {
-        return hostContact;
-    }
+    public LocalDateTime getCreatedDate() { return createdDate; }
+    public void setCreatedDate(LocalDateTime createdDate) { this.createdDate = createdDate; }
 
-    public void setHostContact(String hostContact) {
-        this.hostContact = hostContact;
-    }
-
-    public String getContactPerson() {
-        return contactPerson;
-    }
-
-    public void setContactPerson(String contactPerson) {
-        this.contactPerson = contactPerson;
-    }
-
-    public String getHostEmail() {
-        return hostEmail;
-    }
-
-    public void setHostEmail(String hostEmail) {
-        this.hostEmail = hostEmail;
-    }
-
-    public LocalDateTime getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(LocalDateTime createDate) {
-        this.createDate = createDate;
-    }
-
-    public LocalDateTime getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(LocalDateTime updatedDate) {
-        this.updatedDate = updatedDate;
-    }
-
-    public LocalDateTime getDeleteDate() {
-        return deleteDate;
-    }
-
-    public void setDeleteDate(LocalDateTime deleteDate) {
-        this.deleteDate = deleteDate;
-    }
+    public LocalDateTime getUpdatedDate() { return updatedDate; }
+    public void setUpdatedDate(LocalDateTime updatedDate) { this.updatedDate = updatedDate; }
 }

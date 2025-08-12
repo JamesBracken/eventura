@@ -10,36 +10,35 @@ import java.util.List;
 @RequestMapping("/api/events")
 public class EventController {
 
-    private final EventService eventSerivce;
+    private final EventService eventService;
 
-    public EventController(EventService eventService){
-        this.eventSerivce = eventService;
+    public EventController(EventService eventService) {
+        this.eventService = eventService;
     }
 
     @PostMapping
-    public Event createEvent(@RequestBody Event event){
-        return eventSerivce.createEvent(event);
+    public Event createEvent(@RequestBody Event event) {
+        return eventService.createEvent(event);
     }
 
     @GetMapping
-    public List<Event>getAllEvents(){
-        return eventSerivce.getAllEvents();
+    public List<Event> getAllEvents() {
+        return eventService.getAllEvents();
     }
 
     @GetMapping("/{id}")
-    public Event getEventBuId(@PathVariable Long id){
-        return eventSerivce.getEventById(id);
+    public Event getEventById(@PathVariable Long id) {
+        return eventService.getEventById(id);
     }
 
-    @PutMapping("/{id")
-    public Event updateEvent(@PathVariable Long id, @RequestBody Event event){
-        return eventSerivce.updateEvent(id, event);
+    @PutMapping("/{id}")
+    public Event updateEvent(@PathVariable Long id, @RequestBody Event event) {
+        return eventService.updateEvent(id, event);
     }
 
-    @DeleteMapping("/{id")
-    public String deleteEvent(@PathVariable Long id){
-        eventSerivce.deleteEvent(id);
+    @DeleteMapping("/{id}")
+    public String deleteEvent(@PathVariable Long id) {
+        eventService.deleteEvent(id);
         return String.format("Event with ID: %d has been deleted", id);
     }
-
 }
