@@ -1,6 +1,7 @@
 package com.eventura.springboot_mysql_eventura.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class Address {
     private String city;
     private String country;
     @OneToMany(mappedBy = "address")
-    @JsonIgnore
+    @JsonBackReference
     private List<User> users;
 
     public Long getId() {

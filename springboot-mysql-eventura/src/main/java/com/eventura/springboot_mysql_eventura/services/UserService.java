@@ -1,10 +1,14 @@
 package com.eventura.springboot_mysql_eventura.services;
 
+import com.eventura.springboot_mysql_eventura.models.Address;
 import com.eventura.springboot_mysql_eventura.models.User;
+import com.eventura.springboot_mysql_eventura.repository.AddressRepository;
 import com.eventura.springboot_mysql_eventura.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
+
 import java.time.LocalDateTime;
 
 import java.util.List;
@@ -12,9 +16,11 @@ import java.util.List;
 @Service
 public class UserService {
     private final UserRepository userRepo;
+    private final AddressRepository addressRepo;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, AddressRepository addressRepository) {
         this.userRepo = userRepository;
+        this.addressRepo = addressRepository;
     }
 
     // Create
@@ -26,6 +32,8 @@ public class UserService {
         if (userRepo.existsByEmail(user.getEmail())) {
             throw new IllegalArgumentException("Email already in use:" + user.getEmail());
         }
+        Address address = addressRepo.findById(user.getAddress().getId()).orElseThrow(() -> new RuntimeException("Address " + user.getAddress().getId() + " not found"));
+        user.setAddress(user.getAddress());
         user.setCreatedDate(LocalDateTime.now());  // default the created datetime
         return userRepo.save(user);
     }
@@ -50,19 +58,27 @@ public class UserService {
 
     //UPDATE -> Patch (Partial) - Put (complete ie erase if exists or create
     // if does not exist)
-
-    public User updateUser(Long id, User newUser) {
-        User existing = userRepo.findById(id)
+    @Transactional
+    public User updateUser(User newUser) {
+        User existing = userRepo.findById(newUser.getId())
                 .orElseThrow(() -> new EntityNotFoundException(String.format(
-                        "User with ID: %d, was not found", id)));
+                        "User with ID: %d, was not found", newUser.getId())));
+        Long addressId = null;
+        if (newUser.getAddress() !=null ) {
+            addressId = newUser.getAddress().getId();
+        }
 
+        if (addressId !=null) {
+            Address address = addressRepo.findById(addressId).orElseThrow(() -> new RuntimeException("Address " + newUser.getAddress().getId() + " not found"));
+            existing.setAddress(address);
+        }
         if ((StringUtils.hasText(newUser.getFirstName())) && (StringUtils.hasText(newUser.getLastName()))) {
             existing.setFirstName(newUser.getFirstName());
             existing.setLastName(newUser.getLastName());
         }
 
         if (StringUtils.hasText(newUser.getEmail())) {
-            if (existing.getEmail().equals(newUser.getEmail()) && userRepo.existsByEmail(newUser.getEmail())) {
+            if (!existing.getEmail().equals(newUser.getEmail()) && userRepo.existsByEmail(newUser.getEmail())) {
                 throw new IllegalArgumentException("Email already in use:" + newUser.getEmail());
             }
             existing.setEmail(newUser.getEmail());
@@ -70,7 +86,7 @@ public class UserService {
         if (StringUtils.hasText(newUser.getPhoneNo())) {
             existing.setPhoneNo(newUser.getPhoneNo());
         }
-        if (newUser.getDob() !=null) {
+        if (newUser.getDob() != null) {
             existing.setDob(newUser.getDob());
         }
 

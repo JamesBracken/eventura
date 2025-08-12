@@ -1,11 +1,11 @@
 package com.eventura.springboot_mysql_eventura.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity(name="Users")
 public class User {
@@ -23,7 +23,7 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name="address_id")
-    @JsonIgnore
+    @JsonIgnoreProperties({"users"})
     private Address address;
 
     public Long getId() {
