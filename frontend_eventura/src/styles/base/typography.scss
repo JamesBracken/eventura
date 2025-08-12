@@ -1,4 +1,13 @@
 @use "../abstracts/mixins";
+
+// Resetting base styles for typography here
+
+ul,
+li {
+    list-style-type: none;
+    text-decoration: none;
+}
+
 // Global variables
 
 // Font families
