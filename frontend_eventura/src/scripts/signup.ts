@@ -52,6 +52,7 @@ form.addEventListener("submit", async (e) => {
             const createdUser : User = await createNewUser(newUserData);
             setUserId(createdUser.id);
             console.log("New user saved:", createdUser, userId);
+            errorMessageEl.textContent = "You have successfully logged in!";
             return createdUser;
 
     } catch (error) {

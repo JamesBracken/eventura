@@ -69,19 +69,29 @@
             </nav>
         </header>
 
-        <main>
-            <form>
-                <div>
-                    <label for="useremail">Enter User Email :</label>
-                    <input type="email" name="useremail" id="useremail" />
+        <main class="login">
+            <form class="login__form">
+                <div class="form__field">
+                    <label class="form__label" for="useremail"
+                        >Enter User Email :</label
+                    >
+                    <input
+                        class="form__input"
+                        type="email"
+                        name="useremail"
+                        id="useremail"
+                    />
                 </div>
-                <div> </div>
-                <div>
-                    <button class="btn" id="signIn" type="submit">
-                        Sign In!
-                    </button>
-                </div>
-                <div id="error-message"></div>
+
+                <button
+                    class="form__button form__button--primary"
+                    id="signIn"
+                    type="submit"
+                >
+                    Sign In!
+                </button>
+
+                <div id="error-message" class="form__error"></div>
             </form>
         </main>
 

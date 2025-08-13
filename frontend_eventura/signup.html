@@ -69,59 +69,115 @@
             </nav>
         </header>
 
-        <main>
-            <form>
-                <div>
-                    <label for="firstName">User First Name:</label>
-                    <input type="text" name="firstName" id="firstName" />
+        <main class="signup">
+            <form class="signup__form">
+                <div class="form__field">
+                    <label class="form__label" for="firstName"
+                        >First Name:</label
+                    >
+                    <input
+                        class="form__input"
+                        type="text"
+                        name="firstName"
+                        id="firstName"
+                    />
                 </div>
-                <div>
-                    <label for="lastName">User Last Name:</label>
-                    <input type="text" name="lastName" id="lastName" />
+                <div class="form__field">
+                    <label class="form__label" for="lastName"
+                        >Last Name:</label
+                    >
+                    <input
+                        class="form__input"
+                        type="text"
+                        name="lastName"
+                        id="lastName"
+                    />
                 </div>
-                <div>
-                    <label for="useremail">User Email:</label>
-                    <input type="email" name="useremail" id="useremail" />
+                <div class="form__field">
+                    <label class="form__label" for="useremail"
+                        >Email:</label
+                    >
+                    <input
+                        class="form__input"
+                        type="email"
+                        name="useremail"
+                        id="useremail"
+                    />
                 </div>
-                <div>
-                    <label for="phoneNo">Contact No:</label>
-                    <input type="text" name="phoneNo" id="phoneNo" />
+                <div class="form__field">
+                    <label class="form__label" for="phoneNo">Contact No:</label>
+                    <input
+                        class="form__input"
+                        type="text"
+                        name="phoneNo"
+                        id="phoneNo"
+                    />
                 </div>
-                <div>
-                    <label for="dob">Date of Birth :</label>
-                    <input type="date" name="dob" id="dob" />
+                <div class="form__field">
+                    <label class="form__label" for="dob">Date of Birth :</label>
+                    <input
+                        class="form__input"
+                        type="date"
+                        name="dob"
+                        id="dob"
+                    />
                 </div>
-                <div>
-                    <label for="addressline1">Address :</label>
-                    <div>
+                <div class="form__field form__field--address">
+                    <label class="form__label" for="addressline1"
+                        >Address :</label
+                    >
+                    <div class="form__address--input">
                         <input
+                            class="form__input"
                             type="text"
                             name="addressline1"
                             id="addressline1"
                         />
                     </div>
-                    <div>
+                    <div class="form__address--input">
                         <input
+                            class="form__input"
                             type="text"
                             name="addressline2"
                             id="addressline2"
                         />
                     </div>
                 </div>
-                <div>
-                    <label for="postcode">Postcode :</label>
-                    <input type="text" name="postcode" id="postcode" />
+                <div class="form__field">
+                    <label class="form__label" for="postcode">Postcode :</label>
+                    <input
+                        class="form__input"
+                        type="text"
+                        name="postcode"
+                        id="postcode"
+                    />
                 </div>
-                <div>
-                    <label for="city">City :</label>
-                    <input type="text" name="city" id="city" />
+                <div class="form__field">
+                    <label class="form__label" for="city">City :</label>
+                    <input
+                        class="form__input"
+                        type="text"
+                        name="city"
+                        id="city"
+                    />
                 </div>
-                <div>
-                    <label for="country">Country :</label>
-                    <input type="text" name="country" id="country" />
+                <div class="form__field">
+                    <label class="form__label" for="country">Country :</label>
+                    <input
+                        class="form__input"
+                        type="text"
+                        name="country"
+                        id="country"
+                    />
                 </div>
-                <div id="error-message" ></div>
-                <button class="btn" id="signup" type="submit">Sign up!</button>
+                <div id="error-message" class="form__error"></div>
+                <button
+                    class="form__button form__button--primary"
+                    id="signup"
+                    type="submit"
+                >
+                    Sign up!
+                </button>
                 <div></div>
             </form>
         </main>
