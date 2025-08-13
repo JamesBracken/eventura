@@ -2,16 +2,14 @@ package com.eventura.springboot_mysql_eventura.models;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
-
 @Entity(name = "Bookings")
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookingId;
     private short noOfEventTickets; // CHANGE NAMING
-    private Double TotalCost;   // CHANGE NAMING
-    private boolean isCancel = false; // CHANGE NAMING
+    private Double totalCost;   // CHANGE NAMING
+    private boolean isCancelled = false; // CHANGE NAMING
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -38,11 +36,11 @@ public class Booking {
     }
 
     public Double getTotalCost() {
-        return TotalCost;
+        return totalCost;
     }
 
     public void setTotalCost(Double totalCost) {
-        TotalCost = totalCost;
+        totalCost = totalCost;
     }
 
     public User getUser() {
@@ -61,12 +59,12 @@ public class Booking {
         this.event = event;
     }
 
-    public boolean isCancel() {
-        return this.isCancel;
+    public boolean isCancelled() {
+        return this.isCancelled;
     }
 
     public void setIsCancel(boolean isCancel) {
-        this.isCancel = isCancel;
+        this.isCancelled = isCancel;
     }
 
 }

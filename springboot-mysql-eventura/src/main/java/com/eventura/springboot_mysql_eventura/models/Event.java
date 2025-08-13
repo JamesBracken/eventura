@@ -9,8 +9,7 @@ public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "UniqueID")
-    private Long id; // maps to UniqueID in ERD
+    private Long id;
 
     private String eventName;
     private String eventDescription;
