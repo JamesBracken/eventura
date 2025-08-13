@@ -5,7 +5,7 @@ import com.eventura.springboot_mysql_eventura.services.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
