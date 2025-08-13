@@ -5,16 +5,19 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="FILL THIS OUT-----------" />
-    <title>Eventura | FILL THIS OUT</title>
+    <meta name="description" content="Login to your eventura account" />
+    <title>Eventura | Login </title>
     <!-- Google fonts import -->
-    <!-- FILL THIS OUT WITH IMPORT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <!-- Fontawesome import -->
     <script src="https://kit.fontawesome.com/d51c017cc6.js" crossorigin="anonymous"></script>
     <!-- Bootstrap CSS import -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
-    <link rel="stylesheet" href="./src/styles/main.scss" />
 </head>
 
 <body>
@@ -40,7 +43,7 @@
                             <a class="navbar-nav__link" aria-current="page" href="./signup.html">Sign up</a>
                         </li>
                         <li class="navbar-nav__list">
-                            <a class="navbar-nav__link" aria-current="page" href="./src/pages/profile">Profile</a>
+                            <a class="navbar-nav__link" aria-current="page" href="./profile.html">Profile</a>
                         </li>
                     </ul>
                 </div>
@@ -48,54 +51,18 @@
         </nav>
     </header>
 
-    <main class="signup">
-        <form class="signup__form">
+    <main class="login">
+        <form class="login__form">
             <div class="form__field">
-                <label class="form__label" for="firstName">First Name:</label>
-                <input class="form__input" type="text" name="firstName" id="firstName" />
-            </div>
-            <div class="form__field">
-                <label class="form__label" for="lastName">Last Name:</label>
-                <input class="form__input" type="text" name="lastName" id="lastName" />
-            </div>
-            <div class="form__field">
-                <label class="form__label" for="useremail">Email:</label>
+                <label class="form__label" for="useremail">Enter User Email :</label>
                 <input class="form__input" type="email" name="useremail" id="useremail" />
             </div>
-            <div class="form__field">
-                <label class="form__label" for="phoneNo">Contact No:</label>
-                <input class="form__input" type="text" name="phoneNo" id="phoneNo" />
-            </div>
-            <div class="form__field">
-                <label class="form__label" for="dob">Date of Birth :</label>
-                <input class="form__input" type="date" name="dob" id="dob" />
-            </div>
-            <div class="form__field form__field--address">
-                <label class="form__label" for="addressline1">Address :</label>
-                <div class="form__address--input">
-                    <input class="form__input" type="text" name="addressline1" id="addressline1" />
-                </div>
-                <div class="form__address--input">
-                    <input class="form__input" type="text" name="addressline2" id="addressline2" />
-                </div>
-            </div>
-            <div class="form__field">
-                <label class="form__label" for="postcode">Postcode :</label>
-                <input class="form__input" type="text" name="postcode" id="postcode" />
-            </div>
-            <div class="form__field">
-                <label class="form__label" for="city">City :</label>
-                <input class="form__input" type="text" name="city" id="city" />
-            </div>
-            <div class="form__field">
-                <label class="form__label" for="country">Country :</label>
-                <input class="form__input" type="text" name="country" id="country" />
-            </div>
-            <div id="error-message" class="form__error"></div>
-            <button class="form__button form__button--primary" id="signup" type="submit">
-                Sign up!
+
+            <button class="form__button form__button--primary" id="signIn" type="submit">
+                Sign In!
             </button>
-            <div></div>
+
+            <div id="error-message" class="form__error"></div>
         </form>
     </main>
 
@@ -134,7 +101,7 @@
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
         crossorigin="anonymous"></script>
     <!-- TS script -->
-    <script type="module" src="./src/scripts/signup.ts"></script>
+    <script type="module" src="../scripts/login.ts"></script>
 </body>
 
 </html>

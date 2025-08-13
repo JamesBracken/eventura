@@ -1,11 +1,11 @@
 import "./../styles/main.scss";
 
 import type { EventCreateRequest, Event } from "../models/event";
-import {
-    createNewEvent,
-    getAllEvents,
-    deleteEventById,
-} from "../services/eventsService";
+// import {
+//     createNewEvent,
+//     getAllEvents,
+//     deleteEventById,
+// } from "../services/eventsService";
 
 // DOM manipulation 
 
@@ -42,4 +42,4 @@ form.addEventListener("submit", async (e) => {
 
 
     }
-}
+});
