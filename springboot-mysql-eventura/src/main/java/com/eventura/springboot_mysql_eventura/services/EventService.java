@@ -18,7 +18,6 @@ public class EventService {
     private final UserRepository userRepo;
     private final AddressRepository addressRepo;
 
-
     public EventService(EventRepository eventRepo, UserRepository userRepo, AddressRepository addressRepo) {
         this.eventRepo = eventRepo;
         this.userRepo=userRepo;

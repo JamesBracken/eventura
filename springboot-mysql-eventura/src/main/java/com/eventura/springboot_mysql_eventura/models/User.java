@@ -1,5 +1,7 @@
 package com.eventura.springboot_mysql_eventura.models;
 
+import com.eventura.springboot_mysql_eventura.repository.AddressRepository;
+import com.eventura.springboot_mysql_eventura.repository.UserRepository;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;

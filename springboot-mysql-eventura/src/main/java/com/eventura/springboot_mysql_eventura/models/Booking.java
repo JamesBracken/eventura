@@ -4,21 +4,21 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
-@Entity(name="Bookings")
+@Entity(name = "Bookings")
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookingId;
-    private short NoOfEventTickets; // CHANGE NAMING
+    private short noOfEventTickets; // CHANGE NAMING
     private Double TotalCost;   // CHANGE NAMING
-    private boolean isCancel;
+    private boolean isCancel = false; // CHANGE NAMING
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name="event_id")
+    @JoinColumn(name = "event_id")
     private Event event;
 
     public Long getBookingId() {
@@ -30,11 +30,11 @@ public class Booking {
     }
 
     public short getNoOfEventTickets() {
-        return NoOfEventTickets;
+        return noOfEventTickets;
     }
 
     public void setNoOfEventTickets(short noOfEventTickets) {
-        NoOfEventTickets = noOfEventTickets;
+        this.noOfEventTickets = noOfEventTickets;
     }
 
     public Double getTotalCost() {
@@ -62,10 +62,11 @@ public class Booking {
     }
 
     public boolean isCancel() {
-        return isCancel;
+        return this.isCancel;
     }
 
-    public void setCancel(boolean cancel) {
-        isCancel = cancel;
+    public void setIsCancel(boolean isCancel) {
+        this.isCancel = isCancel;
     }
+
 }
