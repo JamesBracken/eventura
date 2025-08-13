@@ -50,3 +50,25 @@ public class BookingService {
         } else {
             throw new RuntimeException("The event cost per person must be 0+ not " + event.getCostPerPerson());
         }
+
+        return bookingRepo.save(booking);
+    }
+
+
+    //Read
+    public Booking getBookingById(Long id) {
+        return bookingRepo.findById(id)
+                .orElseThrow( () -> new EntityNotFoundException(
+                        String.format("Booking with ID %d not found", id)));
+    }
+
+    //Delete Booking
+    public void deleteBooking(Long id) {
+        if (!bookingRepo.existsById(id)) {
+            throw new EntityNotFoundException(
+                    String.format("Event with ID %d was not found", id)
+            );
+        }
+        bookingRepo.deleteById(id);
+    }
+}
