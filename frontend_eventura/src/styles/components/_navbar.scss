@@ -1,4 +1,6 @@
 @use "../abstracts/mixins";
+@use "../abstracts/palette";
+@use "../base/typography.scss";
 
 .navbar-nav {
 
@@ -12,13 +14,23 @@
         color: black;
         display: inline;
 
+        &--active {
+            color: palette.$color-secondary;
+            font-weight: typography.$fw-bold;
+        }
+
+        &:hover {
+            color: palette.$color-secondary;
+            transition: 300ms ease-in-out;
+        }
+
         &:after {
             content: "";
             position: absolute;
             left: 0;
             bottom: -5px;
-            background-color: black; // Change color to global vars
-            height: 1px;
+            background-color: palette.$color-secondary; // Change color to global vars
+            height: 2px;
             width: 0;
             transition: width 300ms;
         }
@@ -32,6 +44,7 @@
         display: block;
         padding: 5px 0px;
     }
+
 }
 
 nav {

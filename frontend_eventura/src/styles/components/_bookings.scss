@@ -1,23 +1,17 @@
 @use "../abstracts/palette";
+@use "../base/typography.scss";
 
 .events, 
 .booked {
   padding: 20px;
   background-color: #f9f9f9;
-  // max-height: 100vh;
 
   &__title {
     text-align: center;
-    font-size: 20px;
+    font-size: typography.$fs-heading-3;
     margin-bottom: 20px;
     color: #333;
   }
-
-  // &__grid {
-  //   display: grid;
-  //   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  //   gap: 15px;
-  // }
 }
 
 .event-card {
@@ -36,7 +30,6 @@
 
   &__date,
   &__location {
-    // font-size: 10px;
     color: #555;
     margin: 4px 0;
   }
