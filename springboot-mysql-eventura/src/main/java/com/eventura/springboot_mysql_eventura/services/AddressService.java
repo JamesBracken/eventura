@@ -66,7 +66,6 @@ public class AddressService {
         return addressRepo.save(existing);
     }
 
-
     //DELETE
     public void deleteAddress(Long id) {
         if (!addressRepo.existsById(id)) {

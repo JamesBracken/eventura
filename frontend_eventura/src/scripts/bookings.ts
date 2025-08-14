@@ -44,7 +44,7 @@ booked.innerHTML = bookedData
     .map(
         (event) => `
   <article class="event-card">
-    <h2 class="event-card__name">${event.name}</h2>
+    <h3 class="event-card__name">${event.name}</h3>
     <p class="event-card__date">${event.date}</p>
     <p class="event-card__location">${event.location}</p>
   </article>
@@ -58,7 +58,7 @@ futureEvents.innerHTML = eventsData
     .map(
         (event) => `
   <article class="event-card">
-    <h2 class="event-card__name">${event.name}</h2>
+    <h3 class="event-card__name">${event.name}</h3>
     <p class="event-card__date">${event.date}</p>
     <p class="event-card__location">${event.location}</p>
   </article>

@@ -2,23 +2,21 @@ package com.eventura.springboot_mysql_eventura.models;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
-
-@Entity(name="Bookings")
+@Entity(name = "Bookings")
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookingId;
-    private short NoOfEventTickets; // CHANGE NAMING
-    private Double TotalCost;   // CHANGE NAMING
-    private boolean isCancel;
+    private short noOfEventTickets; // CHANGE NAMING
+    private Double totalCost;   // CHANGE NAMING
+    private boolean isCancelled = false; // CHANGE NAMING
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name="event_id")
+    @JoinColumn(name = "event_id")
     private Event event;
 
     public Long getBookingId() {
@@ -30,19 +28,19 @@ public class Booking {
     }
 
     public short getNoOfEventTickets() {
-        return NoOfEventTickets;
+        return noOfEventTickets;
     }
 
     public void setNoOfEventTickets(short noOfEventTickets) {
-        NoOfEventTickets = noOfEventTickets;
+        this.noOfEventTickets = noOfEventTickets;
     }
 
     public Double getTotalCost() {
-        return TotalCost;
+        return totalCost;
     }
 
     public void setTotalCost(Double totalCost) {
-        TotalCost = totalCost;
+        totalCost = totalCost;
     }
 
     public User getUser() {
@@ -61,11 +59,12 @@ public class Booking {
         this.event = event;
     }
 
-    public boolean isCancel() {
-        return isCancel;
+    public boolean isCancelled() {
+        return this.isCancelled;
     }
 
-    public void setCancel(boolean cancel) {
-        isCancel = cancel;
+    public void setIsCancel(boolean isCancel) {
+        this.isCancelled = isCancel;
     }
+
 }

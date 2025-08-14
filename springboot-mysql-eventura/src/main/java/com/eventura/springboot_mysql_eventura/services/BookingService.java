@@ -7,6 +7,7 @@ import com.eventura.springboot_mysql_eventura.models.User;
 import com.eventura.springboot_mysql_eventura.repository.BookingRepository;
 import com.eventura.springboot_mysql_eventura.repository.EventRepository;
 import com.eventura.springboot_mysql_eventura.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -25,51 +26,49 @@ public class BookingService {
     }
 
     //Create
-
     public Booking createBooking(Booking booking) {
 
         Event event = eventRepo.findById(booking.getEvent().getId())
                 .orElseThrow(() -> new RuntimeException("Event with id " + booking.getEvent().getId() + " does not exist"));
 
         User user = userRepo.findById(booking.getUser().getId())
-                        .orElseThrow(() -> new RuntimeException("User with id " + booking.getUser().getId() + " does not exist"));
+                .orElseThrow(() -> new RuntimeException("User with id " + booking.getUser().getId() + " does not exist"));
 
         booking.setEvent(event);
         booking.setUser(user);
 
-        short ticketQty = booking.getNoOfEventTickets(); // ADD VALIDATION
-        booking.setNoOfEventTickets(ticketQty);
+        short ticketQty = booking.getNoOfEventTickets();
+        if (booking.getNoOfEventTickets() < 1) {
+            throw new IllegalArgumentException("Number of tickets must be 1 or more, not " + ticketQty);
+        } else {
+            booking.setNoOfEventTickets(ticketQty);
+        }
 
-        double totalCost = booking.getNoOfEventTickets() * event.getCostPerPerson(); // ADD VALIDATION
-        booking.setTotalCost(totalCost); //TotalCost = NoOfEventTickets * 10.0;// Need to access the event cost_per_person from event
+        if(event.getCostPerPerson() != null) {
+            double totalCost = booking.getNoOfEventTickets() * event.getCostPerPerson(); // ADD VALIDATION
+            booking.setTotalCost(totalCost); //TotalCost = NoOfEventTickets * 10.0;// Need to access the event cost_per_person from event
+        } else {
+            throw new RuntimeException("The event cost per person must be 0+ not " + event.getCostPerPerson());
+        }
 
-        //boolean isCancelled = booking.isCancel(); // ADD VALIDATION
-        booking.setCancel(false);
-
-        //UserId FINISHED
-        //EventId FINISHED
-        //NoOfEventTickets FINISHED
-        //TotalCost FINISHED
-        //isCancel FINISHED
         return bookingRepo.save(booking);
     }
 
+
     //Read
-
-    // May want to add get bookings by user
-
-    // May want to add get bookings by event
-
-    //Update
-
-    //Update NoOfEventTickets
-
-    //Update TotalCost
-
-    //Update IsEventCancel DO NOT DO
-
-    //Delete
+    public Booking getBookingById(Long id) {
+        return bookingRepo.findById(id)
+                .orElseThrow( () -> new EntityNotFoundException(
+                        String.format("Booking with ID %d not found", id)));
+    }
 
     //Delete Booking
-
+    public void deleteBooking(Long id) {
+        if (!bookingRepo.existsById(id)) {
+            throw new EntityNotFoundException(
+                    String.format("Event with ID %d was not found", id)
+            );
+        }
+        bookingRepo.deleteById(id);
+    }
 }
