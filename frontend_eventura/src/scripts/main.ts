@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <h3 class="event-card__name">${event.eventName}</h3>
                 <p class="event-card__date">${event.startDate}</p>
                 <p class="event-card__location">${event.address}</p>
-                <button class="book-btn" data-id="${event.id}">Book</button>
             </article>
         `
                     )

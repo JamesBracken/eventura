@@ -6,7 +6,7 @@ export const bookAnEvent = async (bookevent: BookEvents) => {
             `https://eventura-production.up.railway.app/api/bookings`,
             {
                 headers: { "Content-Type": "application/json" },
-                method: "post",
+                method: "delete",
                 body: JSON.stringify(bookevent),
             }
         );

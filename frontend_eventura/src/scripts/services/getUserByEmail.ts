@@ -3,7 +3,9 @@ import { setUserId } from "../models/userState";
 
 export const fetchData = async (email: string) :Promise<User>=> {
     try {
-        const response = await fetch(`http://localhost:8080/api/users/byEmail/${email}`);
+        const response = await fetch(
+            `https://eventura-production.up.railway.app/api/users/byEmail/${email}`
+        );
         if (response.status !== 200) {
             throw new Error("Something went wrong!");
         }

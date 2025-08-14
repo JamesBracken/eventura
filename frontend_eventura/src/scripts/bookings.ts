@@ -78,6 +78,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <h3 class="event-card__name">${event.eventName}</h3>
                             <p class="event-card__noTickets">Tickets: ${event.noOfEventTickets}</p>
                             <p class="event-card__location">Location:${event.address.postcode}</p>
+                            <button class="cancel-btn" data-id="${event.id}">Book</button>
                         </article>
                     `
                     )
@@ -135,6 +136,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
     };
+
 
     await renderNyBookedEvents();
     // await renderFutureEvents();

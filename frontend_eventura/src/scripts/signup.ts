@@ -54,7 +54,7 @@ form.addEventListener("submit", async (e) => {
             setIsAdminUser(createdUser.isAdminUser);
             console.log("New user saved:", createdUser, getUserId(), getIsAdminUser());
             errorMessageEl.textContent = "You have successfully logged in!";
-            window.location.href = "./../pages/bookings/index.html";
+            window.location.href = "./../bookings/index.html";
             return createdUser;
 
     } catch (error) {
