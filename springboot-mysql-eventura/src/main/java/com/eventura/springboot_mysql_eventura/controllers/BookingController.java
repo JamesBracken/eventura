@@ -1,8 +1,11 @@
 package com.eventura.springboot_mysql_eventura.controllers;
 
+import com.eventura.springboot_mysql_eventura.DTOs.BookingResponse;
 import com.eventura.springboot_mysql_eventura.models.Booking;
 import com.eventura.springboot_mysql_eventura.services.BookingService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/bookings")
@@ -16,6 +19,10 @@ public class BookingController {
     @PostMapping
     public Booking createBooking(@RequestBody Booking booking) {
         return bookingService.createBooking(booking);
+    }
+
+    @GetMapping("/myBookings/{id}")
+    public List<BookingResponse> getMyBookings(@PathVariable Long id) {return bookingService.getMyBookings(id);
     }
 
     @DeleteMapping("/{id}")
