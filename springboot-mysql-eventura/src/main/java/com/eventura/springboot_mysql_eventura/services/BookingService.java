@@ -9,6 +9,7 @@ import com.eventura.springboot_mysql_eventura.repository.BookingRepository;
 import com.eventura.springboot_mysql_eventura.repository.EventRepository;
 import com.eventura.springboot_mysql_eventura.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -29,6 +30,7 @@ public class BookingService {
     }
 
     //Create
+    @Transactional
     public Booking createBooking(Booking booking) {
 
         Event event = eventRepo.findById(booking.getEvent().getId())
@@ -42,18 +44,17 @@ public class BookingService {
 
         short ticketQty = booking.getNoOfEventTickets();
         if (booking.getNoOfEventTickets() < 1) {
-            throw new IllegalArgumentException("Number of tickets must be 1 or more, not " + ticketQty);
+            throw new IllegalArgumentException("Number of tickets must be 1 or greater, " + ticketQty + " is too low");
         } else {
             booking.setNoOfEventTickets(ticketQty);
         }
 
         if(event.getCostPerPerson() != null) {
             double totalCost = booking.getNoOfEventTickets() * event.getCostPerPerson(); // ADD VALIDATION
-            booking.setTotalCost(totalCost); //TotalCost = NoOfEventTickets * 10.0;// Need to access the event cost_per_person from event
+            booking.setTotalCost(totalCost); // Need to access the event cost_per_person from event
         } else {
-            throw new RuntimeException("The event cost per person must be 0+ not " + event.getCostPerPerson());
+            throw new RuntimeException("The event cost per person must not be null " + event.getCostPerPerson());
         }
-
         return bookingRepo.save(booking);
     }
 
