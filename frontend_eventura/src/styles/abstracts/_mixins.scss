@@ -33,7 +33,7 @@ $lg: 992px; // landscape tablets / laptops
     }
 }
 
-@mixin box-shadow-effect() {
-    $box-shadow: 0px 4px 12px -2px black, //palette.$clr-primary, // CHANGE TO PALETTE
-        0px 3px 7px -3px black; //palette.$clr-primary;;
+@mixin box-shadow-effect($color: grey) {
+    box-shadow: 0px 4px 12px -2px $color,
+        0px 3px 7px -3px $color;
 }
