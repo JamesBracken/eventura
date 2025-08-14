@@ -50,13 +50,23 @@ public class EventService {
         }
 
         // Checking if address exists
-        if (event.getAddress() != null && event.getAddress().getId() != null) {
+        boolean hasLocation = StringUtils.hasText(event.getLocation());
+        boolean hasAddressId = event.getAddress() != null && event.getAddress().getId() != null;
+
+
+        if (hasAddressId) {
             Address address = addressRepo.findById(event.getAddress().getId())
                     .orElseThrow(() -> new RuntimeException(
                             "Address with ID " + event.getAddress().getId() + " not found"));
             event.setAddress(address);
-        } else {
-            throw new IllegalArgumentException("Address ID is required");
+        }
+
+        if (!hasLocation && !hasAddressId) {
+            throw new IllegalArgumentException("Provide either a location or an address ID.");
+        }
+
+        if (event.getCreatedDate() == null) {
+            event.setCreatedDate(LocalDateTime.now());
         }
 
         if (event.getCreatedDate() == null) {
@@ -99,6 +109,13 @@ public class EventService {
             existing.setEventDescription(updatedEvent.getEventDescription());
         }
 
+        if (StringUtils.hasText(updatedEvent.getEventName())) {
+            existing.setEventName(updatedEvent.getEventName());
+        }
+        if (StringUtils.hasText(updatedEvent.getEventDescription())) {
+            existing.setEventDescription(updatedEvent.getEventDescription());
+        }
+
 
         if (updatedEvent.getOrganiser() != null && StringUtils.hasText(updatedEvent.getOrganiser().getEmail())) {
             User organiser = userRepo.findByEmail(updatedEvent.getOrganiser().getEmail())
@@ -114,15 +131,23 @@ public class EventService {
                             "CreatedBy user with email " + updatedEvent.getCreatedBy().getEmail() + " not found"));
             existing.setCreatedBy(creator);
         }
-
-
-        if (updatedEvent.getAddress() != null && updatedEvent.getAddress().getId() != null) {
-            Address address = addressRepo.findById(updatedEvent.getAddress().getId())
-                    .orElseThrow(() -> new RuntimeException(
-                            "Address with ID " + updatedEvent.getAddress().getId() + " not found"));
-            existing.setAddress(address);
+        if (updatedEvent.getLocation() != null) {
+            // allow clearing by sending empty string, or setting new text
+            existing.setLocation(StringUtils.hasText(updatedEvent.getLocation())
+                    ? updatedEvent.getLocation().trim()
+                    : null);
         }
 
+        if (updatedEvent.getAddress() != null) {
+            if (updatedEvent.getAddress().getId() == null) {
+                existing.setAddress(null); // clear it if id is null
+            } else {
+                Address address = addressRepo.findById(updatedEvent.getAddress().getId())
+                        .orElseThrow(() -> new RuntimeException(
+                                "Address with ID " + updatedEvent.getAddress().getId() + " not found"));
+                existing.setAddress(address);
+            }
+        }
         if (updatedEvent.getMaxCapacity() != null) {
             existing.setMaxCapacity(updatedEvent.getMaxCapacity());
         }

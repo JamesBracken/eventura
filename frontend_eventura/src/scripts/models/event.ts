@@ -3,7 +3,8 @@ export interface EventCreateRequest {
     eventDescription?: string;
     organiser: { email: string };
     createdBy: { email: string };
-    address: { id: number };
+    location?: string;
+    address?: { id: number };
     noOfEventDates?: number;
     maxCapacity?: number;
     costPerPerson?: number;

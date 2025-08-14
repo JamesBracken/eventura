@@ -26,7 +26,16 @@ public class Event {
     @JoinColumn(name = "address", nullable = true)
     private Address address; // link to Address entity
 
+@Column(name = "location")
+private String location;
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
     @ManyToOne
     @JoinColumn(name = "createdBy")
