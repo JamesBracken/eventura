@@ -1,6 +1,7 @@
 package com.eventura.springboot_mysql_eventura.services;
 
 
+import com.eventura.springboot_mysql_eventura.DTOs.BookingResponse;
 import com.eventura.springboot_mysql_eventura.models.Booking;
 import com.eventura.springboot_mysql_eventura.models.Event;
 import com.eventura.springboot_mysql_eventura.models.User;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BookingService {
@@ -60,6 +63,15 @@ public class BookingService {
         return bookingRepo.findById(id)
                 .orElseThrow( () -> new EntityNotFoundException(
                         String.format("Booking with ID %d not found", id)));
+    }
+
+    public List<BookingResponse> getMyBookings(Long id) {
+        User user = userRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("User with id " + id + " does not exist"));
+        List<Booking> bookings = bookingRepo.findAllByUserId(id);
+        return bookings.stream()
+                .map(BookingResponse::new)
+                .collect(Collectors.toList());
     }
 
     //Delete Booking
