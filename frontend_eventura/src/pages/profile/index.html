@@ -25,7 +25,6 @@
             integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
             crossorigin="anonymous"
         />
-        <link rel="stylesheet" href="./src/styles/main.scss" />
     </head>
 
     <body>
@@ -51,13 +50,12 @@
                         class="collapse navbar-collapse"
                         id="navbarNavAltMarkup"
                     >
-                        <!-- <div class="navbar-nav"> -->
-                        <ul class="navbar-nav">
+                      <ul class="navbar-nav">
                             <li class="navbar-nav__list">
                                 <a
                                     class="navbar-nav__link"
                                     aria-current="page"
-                                    href="/"
+                                    href="./../../../index.html"
                                     >Home</a
                                 >
                             </li>
@@ -65,7 +63,7 @@
                                 <a
                                     class="navbar-nav__link"
                                     aria-current="page"
-                                    href="./src/pages/login/index.html"
+                                    href="./../../pages/login/index.html"
                                     >Sign in</a
                                 >
                             </li>
@@ -73,7 +71,7 @@
                                 <a
                                     class="navbar-nav__link"
                                     aria-current="page"
-                                    href="./src/pages/signup/index.html"
+                                    href="./../../pages/signup/index.html"
                                     >Sign up</a
                                 >
                             </li>
@@ -81,7 +79,7 @@
                                 <a
                                     class="navbar-nav__link"
                                     aria-current="page"
-                                    href="./src/pages/profile/index.html"
+                                    href="./index.html"
                                     >Profile</a
                                 >
                             </li>
@@ -89,12 +87,11 @@
                                 <a
                                     class="navbar-nav__link"
                                     aria-current="page"
-                                    href="./src/pages/events/index.html"
+                                    href="./../events/index.html"
                                     >Events</a
                                 >
                             </li>
                         </ul>
-                        <!-- </div> -->
                     </div>
                 </div>
             </nav>
@@ -102,7 +99,11 @@
 
         <main>
             <section>
-                <h1>Test</h1>
+                <h1>PROFILE PAGE</h1>
+                <!-- Contain user information -->
+                <div id="userInfoDiv"></div>
+                <!-- Contain user events -->
+                <div id="userEventsDiv"></div>
             </section>
         </main>
 
@@ -158,6 +159,6 @@
             crossorigin="anonymous"
         ></script>
         <!-- TS script -->
-        <script type="module" src="/src/scripts/main.ts"></script>
+        <script type="module" src="./../../scripts/main.ts"></script>
     </body>
 </html>
