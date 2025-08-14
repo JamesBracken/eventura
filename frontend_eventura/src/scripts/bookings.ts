@@ -2,7 +2,7 @@ import "./../styles/main.scss";
 import { fetchUserBookingsData } from "./services/getUserBookings";
 import { bookAnEvent } from "./services/bookAnEvent";
 import type { BookEvents } from "./models/bookEvent";
-import { getUserId,getIsAdminUser } from "./models/userState";
+import { getUserId, getIsAdminUser } from "./models/userState";
 import { getAllEvents } from "./services/eventsService";
 let eventsData: any[] = [];
 
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const futureEvents = document.querySelector(".events__grid") as HTMLElement;
     const bookedGrid = document.querySelector<HTMLElement>(".booked__grid");
 
-    console.log("insidebookings: ",getIsAdminUser())
+    console.log("insidebookings: ", getIsAdminUser())
     const getEvents = async () => {
         try {
             eventsData = await getAllEvents(); // store once at startup
@@ -39,12 +39,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                 futureEvents.innerHTML = eventsData
                     .map(
                         (event) => `
-            <article class="event-card">
-                <h3 class="event-card__name">${event.eventName}</h3>
-                <p class="event-card__date">${event.startDate}</p>
-                <p class="event-card__location">${event.address}</p>
-                <button class="book-btn" data-id="${event.id}">Book</button>
-            </article>
+                        
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-2">
+                <article class="event-card h-100">
+                    <h3 class="event-card__name">${event.eventName}</h3>
+                    <p class="event-card__date">${event.startDate}</p>
+                    <p class="event-card__location">${event.address}</p>
+                    <button class="small-button" data-id="${event.id}">Book</button>
+                </article>
+            </div>
         `
                     )
                     .join("");
@@ -74,11 +77,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                 bookedGrid.innerHTML = bookedData
                     .map(
                         (event) => `
-                        <article class="event-card">
-                            <h3 class="event-card__name">${event.eventName}</h3>
-                            <p class="event-card__noTickets">Tickets: ${event.noOfEventTickets}</p>
-                            <p class="event-card__location">Location:${event.address.postcode}</p>
-                        </article>
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-2">
+                            <div>
+                                <article class="event-card h-100">
+                                    <h3 class="event-card__name">${event.eventName}</h3>
+                                    <p class="event-card__noTickets">Tickets: ${event.noOfEventTickets}</p>
+                                    <p class="event-card__location">Location:${event.address.postcode}</p>
+                                </article>
+                            </div>
+                        </div>
                     `
                     )
                     .join("");
@@ -100,7 +107,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         // Attach a single click listener to parent container (event delegation)
         futureEvents.addEventListener("click", async (e) => {
             const target = e.target as HTMLElement;
-            if (target.classList.contains("book-btn")) {
+            if (target.classList.contains("small-button")) {
                 const eventId = target.getAttribute("data-id");
                 console.log(`event id to book to: ${eventId}`);
                 console.log(`User id: ${getUserId()}`);
