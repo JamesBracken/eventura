@@ -23,8 +23,3 @@ export default defineConfig({
         }
     }
 })
-
-// export default defineConfig({
-//     base: "/",
-
-// })
