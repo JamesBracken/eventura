@@ -40,7 +40,7 @@ public class Booking {
     }
 
     public void setTotalCost(Double totalCost) {
-        totalCost = totalCost;
+        this.totalCost = totalCost;
     }
 
     public User getUser() {
