@@ -15,9 +15,10 @@ export default defineConfig({
             input: {
                 main: resolve(__dirname, "index.html"),
                 bookings: resolve(__dirname, "src/pages/bookings/index.html"),
-                events: resolve(__dirname, "index.html"),
-                login: resolve(__dirname, "index.html"),
-                profile: resolve(__dirname, "index.html")
+                events: resolve(__dirname, "src/pages/events/index.html"),
+                login: resolve(__dirname, "src/pages/login/index.html"),
+                signup: resolve(__dirname, "src/pages/signup/index.html"),
+                profile: resolve(__dirname, "src/pages/profile/index.html")
             }
         }
     }
