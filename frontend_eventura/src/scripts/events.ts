@@ -24,7 +24,6 @@ const $ = (id: string) =>
 const eventName = $("eventName") as HTMLInputElement;
 const eventDescription = $("eventDescription") as HTMLTextAreaElement;
 const organiserEmail = $("organiserEmail") as HTMLInputElement;
-const createdByEmail = $("createdByEmail") as HTMLInputElement;
 const locationInput = $("location") as HTMLInputElement;
 const noOfEventDates = $("noOfEventDates") as HTMLInputElement;
 const maxCapacity = $("maxCapacity") as HTMLInputElement;
@@ -71,7 +70,7 @@ form.addEventListener("submit", async (e) => {
             eventName: eventName.value.trim(),
             eventDescription: eventDescription.value.trim() || undefined,
             organiser: { email: organiserEmail.value.trim() },
-            createdBy: { email: createdByEmail.value.trim() },
+            createdBy: { email: organiserEmail.value.trim() },
             address: createdAddress ? { id: createdAddress.id } : undefined, 
             location: locationInput.value.trim() || undefined,
             noOfEventDates: noOfEventDates.value
@@ -125,9 +124,6 @@ form.addEventListener("submit", async (e) => {
 });
 
 
-organiserEmail.addEventListener("input", () => {
-    createdByEmail.value = organiserEmail.value;
-});
 
 
 form.addEventListener("reset", () => {
@@ -191,7 +187,7 @@ list.addEventListener("click", async (e) => {
         eventName.value = event.eventName;
         eventDescription.value = event.eventDescription || "";
         organiserEmail.value = event.organiser.email;
-        createdByEmail.value = event.createdBy.email;
+    
         locationInput.value = event.location || "";
         noOfEventDates.value = String(event.noOfEventDates || "");
         maxCapacity.value = String(event.maxCapacity || "");
