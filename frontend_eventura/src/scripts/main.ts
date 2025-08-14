@@ -28,12 +28,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                 futureEvents.innerHTML = eventsData
                     .map(
                         (event) => `
-            <article class="event-card">
-                <h3 class="event-card__name">${event.eventName}</h3>
-                <p class="event-card__date">${event.startDate}</p>
-                <p class="event-card__location">${event.address}</p>
-                <button class="book-btn" data-id="${event.id}">Book</button>
-            </article>
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-2">
+                <article class="event-card h-100">
+                    <h3 class="event-card__name">${event.eventName}</h3>
+                    <p class="event-card__date">${event.startDate}</p>
+                    <p class="event-card__location">${event.address}</p>
+                    <button class="small-button mt-3" data-id="${event.id}">Book</button>
+                </article>
+            </div>
         `
                     )
                     .join("");
