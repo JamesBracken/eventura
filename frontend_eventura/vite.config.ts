@@ -1,14 +1,14 @@
 import Inspect from "vite-plugin-inspect";
 import { defineConfig } from "vite";
-import { resolve } from "path";
-// import { dirname, resolve } from "path";
+// import { resolve } from "path";
+import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
 
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = dirname(__filename);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export default defineConfig({
-    base: "/eventura",
+    base: "/eventura/",
     plugins: [Inspect()],
     build: {
         rollupOptions: {
