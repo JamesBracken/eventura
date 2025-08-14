@@ -12,7 +12,8 @@ import {
     updateEventById,
 } from "./services/eventsService";
 
-import { createNewAddress } from "./services/createNewAddress"; 
+import { createNewAddress } from "./services/createNewAddress";
+
 // DOM manipulation
 const form = document.querySelector("form") as HTMLFormElement;
 const msg = document.querySelector<HTMLDivElement>("#formMessage")!;
@@ -24,7 +25,7 @@ const $ = (id: string) =>
 const eventName = $("eventName") as HTMLInputElement;
 const eventDescription = $("eventDescription") as HTMLTextAreaElement;
 const organiserEmail = $("organiserEmail") as HTMLInputElement;
-const createdByEmail = $("createdByEmail") as HTMLInputElement;
+const createdByEmail = $("createdByEmail") as HTMLInputElement; // ← restored
 const locationInput = $("location") as HTMLInputElement;
 const noOfEventDates = $("noOfEventDates") as HTMLInputElement;
 const maxCapacity = $("maxCapacity") as HTMLInputElement;
@@ -40,7 +41,6 @@ const country = $("country") as HTMLInputElement;
 
 let editingId: number | null = null;
 
-
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
     msg.textContent = "";
@@ -48,7 +48,6 @@ form.addEventListener("submit", async (e) => {
     try {
         let createdAddress: Address | undefined;
 
-       
         if (
             addr1?.value.trim() ||
             addr2?.value.trim() ||
@@ -71,8 +70,8 @@ form.addEventListener("submit", async (e) => {
             eventName: eventName.value.trim(),
             eventDescription: eventDescription.value.trim() || undefined,
             organiser: { email: organiserEmail.value.trim() },
-            createdBy: { email: createdByEmail.value.trim() },
-            address: createdAddress ? { id: createdAddress.id } : undefined, 
+            createdBy: { email: createdByEmail.value.trim() }, // ← restored
+            address: createdAddress ? { id: createdAddress.id } : undefined,
             location: locationInput.value.trim() || undefined,
             noOfEventDates: noOfEventDates.value
                 ? Number(noOfEventDates.value)
@@ -123,12 +122,6 @@ form.addEventListener("submit", async (e) => {
         msg.className = "text-danger";
     }
 });
-
-
-organiserEmail.addEventListener("input", () => {
-    createdByEmail.value = organiserEmail.value;
-});
-
 
 form.addEventListener("reset", () => {
     editingId = null;
@@ -191,7 +184,7 @@ list.addEventListener("click", async (e) => {
         eventName.value = event.eventName;
         eventDescription.value = event.eventDescription || "";
         organiserEmail.value = event.organiser.email;
-        createdByEmail.value = event.createdBy.email;
+        createdByEmail.value = event.createdBy.email; // ← restored
         locationInput.value = event.location || "";
         noOfEventDates.value = String(event.noOfEventDates || "");
         maxCapacity.value = String(event.maxCapacity || "");

@@ -1,4 +1,4 @@
-export interface MyBookings {
+export interface UserBookings {
     bookingId: number,
     noOfEventTickets: number;
     totalCost: number;
