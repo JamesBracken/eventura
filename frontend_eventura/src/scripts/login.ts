@@ -1,4 +1,4 @@
-import { setUserId, userId } from "./models/userState";
+import { setUserId, getUserId } from "./models/userState";
 import { fetchData } from "./services/getUserByEmail"; // adjust path as needed
 import "./../styles/main.scss";
 // Grab the form & input
@@ -21,7 +21,7 @@ if (form && emailInput) {
         try {
             const user = await fetchData(email);
             setUserId(user.id);
-            console.log("Fetched user by email :", user, userId, user.id);
+            console.log("Fetched user by email :", user, getUserId(), user.id);
             errorMessageEl.textContent = "You have successfully logged in!";
             // TODO: display user data in the UI
         } catch (err) {

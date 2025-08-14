@@ -4,7 +4,7 @@ import type { User } from "./models/user";
 import type { NewAddress } from "./models/newAddress";
 import type { Address } from "./models/address";
 import { createNewAddress } from "./services/createNewAddress";
-import { setUserId, userId } from "./models/userState";
+import { setUserId, getUserId } from "./models/userState";
 import "./../styles/main.scss";
 
 // Grab the form & input
@@ -51,7 +51,7 @@ form.addEventListener("submit", async (e) => {
 
             const createdUser : User = await createNewUser(newUserData);
             setUserId(createdUser.id);
-            console.log("New user saved:", createdUser, userId);
+            console.log("New user saved:", createdUser, getUserId());
             errorMessageEl.textContent = "You have successfully logged in!";
             return createdUser;
 
