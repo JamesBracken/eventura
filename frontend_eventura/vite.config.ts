@@ -8,7 +8,7 @@ import { fileURLToPath } from "url";
 // const __dirname = dirname(__filename);
 
 export default defineConfig({
-    base: "/",
+    base: "/eventura",
     plugins: [Inspect()],
     build: {
         rollupOptions: {
