@@ -23,8 +23,10 @@ public class Event {
     private Double costPerPerson;
 
     @ManyToOne
-    @JoinColumn(name = "address")
+    @JoinColumn(name = "address", nullable = true)
     private Address address; // link to Address entity
+
+
 
     @ManyToOne
     @JoinColumn(name = "createdBy")
