@@ -4,6 +4,7 @@
 @use "./components/inputform";
 @use "./components/bookings";
 @use "./components/button";
+@use "./abstracts/mixins";
 
 //Used to push the footer down to the bottom
 body, html {
@@ -18,7 +19,7 @@ body {
 }
 
 main {
-    padding-top: 100px;
+    padding-top: 80px;
 }
 
 header {
