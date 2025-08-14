@@ -1,6 +1,7 @@
-import { setUserId, getUserId } from "./models/userState";
+import { setUserId, getUserId, setIsAdminUser, getIsAdminUser } from "./models/userState";
 import { fetchData } from "./services/getUserByEmail"; // adjust path as needed
 import "./../styles/main.scss";
+
 // Grab the form & input
 const form = document.querySelector("form");
 const emailInput = document.querySelector<HTMLInputElement>("#useremail");
@@ -20,10 +21,12 @@ if (form && emailInput) {
 
         try {
             const user = await fetchData(email);
-            setUserId(user.id);
-            console.log("Fetched user by email :", user, getUserId(), user.id);
+            setUserId(user.id)
+            setIsAdminUser(user.isAdminUser);
+            console.log("Fetched user by email :", user, getUserId(), user.id, user.isAdminUser, getIsAdminUser());
             errorMessageEl.textContent = "You have successfully logged in!";
-            // TODO: display user data in the UI
+            // redirect to bookings
+            window.location.href = "./../bookings/index.html";
         } catch (err) {
             console.error("Error in login process:", err);
             if (err instanceof Error) {

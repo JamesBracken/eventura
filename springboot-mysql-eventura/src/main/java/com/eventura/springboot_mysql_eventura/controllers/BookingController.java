@@ -22,8 +22,8 @@ public class BookingController {
         return bookingService.createBooking(booking);
     }
 
-    @GetMapping("/myBookings/{id}")
-    public List<BookingResponse> getMyBookings(@PathVariable Long id) {return bookingService.getMyBookings(id);
+    @GetMapping("/byUser/{id}")
+    public List<BookingResponse> getBookingsForUser(@PathVariable Long id) {return bookingService.getBookingsForUser(id);
     }
 
     @DeleteMapping("/{id}")

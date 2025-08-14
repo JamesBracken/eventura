@@ -66,7 +66,7 @@ public class BookingService {
                         String.format("Booking with ID %d not found", id)));
     }
 
-    public List<BookingResponse> getMyBookings(Long id) {
+    public List<BookingResponse> getBookingsForUser(Long id) {
         User user = userRepo.findById(id)
                 .orElseThrow(() -> new RuntimeException("User with id " + id + " does not exist"));
         List<Booking> bookings = bookingRepo.findAllByUserId(id);

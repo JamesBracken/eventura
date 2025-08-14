@@ -2,7 +2,7 @@ import "./../styles/main.scss";
 import { fetchUserBookingsData } from "./services/getUserBookings";
 import { bookAnEvent } from "./services/bookAnEvent";
 import type { BookEvents } from "./models/bookEvent";
-import { getUserId } from "./models/userState";
+import { getUserId,getIsAdminUser } from "./models/userState";
 import { getAllEvents } from "./services/eventsService";
 let eventsData: any[] = [];
 
@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const futureEvents = document.querySelector(".events__grid") as HTMLElement;
     const bookedGrid = document.querySelector<HTMLElement>(".booked__grid");
 
+    console.log("insidebookings: ",getIsAdminUser())
     const getEvents = async () => {
         try {
             eventsData = await getAllEvents(); // store once at startup
