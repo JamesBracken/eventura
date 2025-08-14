@@ -8,10 +8,10 @@ $lg: 992px; // landscape tablets / laptops
 }
 
 @mixin flex-center() {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 // Media query mixins
@@ -31,4 +31,9 @@ $lg: 992px; // landscape tablets / laptops
     @media only screen and (min-width:($lg + 1px)) {
         @content;
     }
+}
+
+@mixin box-shadow-effect() {
+    $box-shadow: 0px 4px 12px -2px black, //palette.$clr-primary, // CHANGE TO PALETTE
+        0px 3px 7px -3px black; //palette.$clr-primary;;
 }
