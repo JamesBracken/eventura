@@ -1,8 +1,9 @@
 import "./../styles/main.scss";
 import { fetchUserBookingsData } from "./services/getUserBookings";
 import { bookAnEvent } from "./services/bookAnEvent";
+import {cancelABooking} from "./services/cancelABooking"
 import type { BookEvents } from "./models/bookEvent";
-import { getUserId,getIsAdminUser } from "./models/userState";
+import { getUserId, getIsAdminUser } from "./models/userState";
 import { getAllEvents } from "./services/eventsService";
 let eventsData: any[] = [];
 
@@ -12,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const futureEvents = document.querySelector(".events__grid") as HTMLElement;
     const bookedGrid = document.querySelector<HTMLElement>(".booked__grid");
 
-    console.log("insidebookings: ",getIsAdminUser())
+    console.log("insidebookings: ", getIsAdminUser());
     const getEvents = async () => {
         try {
             eventsData = await getAllEvents(); // store once at startup
@@ -30,23 +31,33 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const renderFutureEvents = async () => {
         try {
-            // eventsData = await getAllEvents();
-            // if (errorMessageEl) {
-            //     errorMessageEl.textContent = "loading data ...";
-            // }
-
             if (futureEvents && Array.isArray(eventsData)) {
                 futureEvents.innerHTML = eventsData
-                    .map(
-                        (event) => `
-            <article class="event-card">
-                <h3 class="event-card__name">${event.eventName}</h3>
-                <p class="event-card__date">${event.startDate}</p>
-                <p class="event-card__location">${event.address}</p>
-                <button class="book-btn" data-id="${event.id}">Book</button>
-            </article>
-        `
-                    )
+                    .map((event) => {
+                        // Convert ISO date string to Date object
+                        const date = new Date(event.startDate);
+                        const options = {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                            hour: "numeric",
+                            minute: "2-digit",
+                        } as Intl.DateTimeFormatOptions;
+
+                        const formattedDate = date.toLocaleDateString(
+                            undefined,
+                            options
+                        );
+
+                        return `
+                        <article class="event-card">
+                            <h3 class="event-card__name">${event.eventName}</h3>
+                            <p class="event-card__date">${formattedDate}</p>
+                            <p class="event-card__location">${event.address.postcode}</p>
+                            <button class="book-btn" data-id="${event.id}">Book</button>
+                        </article>
+                    `;
+                    })
                     .join("");
             }
         } catch (err) {
@@ -78,7 +89,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <h3 class="event-card__name">${event.eventName}</h3>
                             <p class="event-card__noTickets">Tickets: ${event.noOfEventTickets}</p>
                             <p class="event-card__location">Location:${event.address.postcode}</p>
-                            <button class="cancel-btn" data-id="${event.id}">Book</button>
+                            <button class="cancel-btn" data-id="${event.bookingId}">Cancel</button>
                         </article>
                     `
                     )
@@ -137,9 +148,33 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     };
 
+    const cancelBookingAlert = () => {
+        // Attach a single click listener to parent container (event delegation)
+        bookedGrid?.addEventListener("click", async (e) => {
+            const target = e.target as HTMLElement;
+            if (target.classList.contains("cancel-btn")) {
+                const bookingId = target.getAttribute("data-id");
+                console.log(`booking id to cancel : ${bookingId}`);
+                console.log(`User id: ${getUserId()}`);
+
+                try {
+                    const result = await cancelABooking(Number(bookingId));
+                    console.log("Booked an event successfully:", result);
+                    eventsData = eventsData.filter(
+                        (event) => event.bookingId !== Number(bookingId)
+                    );
+                    renderNyBookedEvents();
+                    renderFutureEvents();
+                } catch (error) {
+                    console.error("Booking cancellation failed:", error);
+                }
+            }
+        });
+    };
 
     await renderNyBookedEvents();
     // await renderFutureEvents();
     await getEvents();
     addFutureEventsAlert();
+    cancelBookingAlert();
 });
