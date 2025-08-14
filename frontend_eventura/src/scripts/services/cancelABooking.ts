@@ -1,20 +1,18 @@
-import type { BookEvents } from "../models/bookEvent";
-
-export const bookAnEvent = async (bookevent: BookEvents) => {
+export const cancelABooking = async (bookingId: number) => {
+    console.log("in cancelABooking", bookingId);
     try {
         const response = await fetch(
-            `https://eventura-production.up.railway.app/api/bookings`,
+            `https://eventura-production.up.railway.app/api/bookings/${bookingId}`,
             {
                 headers: { "Content-Type": "application/json" },
-                method: "delete",
-                body: JSON.stringify(bookevent),
+                method: "DELETE"
             }
         );
         if (!response.ok) {
-            throw new Error(`Error booking an event: ${response.status}`);
+            throw new Error(`Error cancelling a booking : ${response.status}`);
         }
         const data = await response.json();
-        console.log("Event booked",data);
+        console.log("Booking cancelled", data);
         return data;
     } catch (error) {
         console.error("Error fetching data:", error);

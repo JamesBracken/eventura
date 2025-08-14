@@ -26,15 +26,31 @@ document.addEventListener("DOMContentLoaded", async () => {
         try {
             if (futureEvents && Array.isArray(eventsData)) {
                 futureEvents.innerHTML = eventsData
-                    .map(
-                        (event) => `
+                    .map((event) => {
+                        // Convert ISO date string to Date object
+                        const date = new Date(event.startDate);
+                        const options = {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                            hour: "numeric",
+                            minute: "2-digit",
+                        } as Intl.DateTimeFormatOptions;
+
+                        const formattedDate = date.toLocaleDateString(
+                            undefined,
+                            options
+                        );
+
+                        return `
             <article class="event-card">
                 <h3 class="event-card__name">${event.eventName}</h3>
-                <p class="event-card__date">${event.startDate}</p>
-                <p class="event-card__location">${event.address}</p>
+                <p class="event-card__date">${formattedDate}</p>
+                <p class="event-card__location">${event.address.postcode}</p>
+
             </article>
-        `
-                    )
+        `;
+                    })
                     .join("");
             }
         } catch (err) {
@@ -50,5 +66,4 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     };
     await getEvents();
-
 });
