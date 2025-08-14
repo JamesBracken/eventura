@@ -32,66 +32,52 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-               <ul class="navbar-nav">
-                            <li class="navbar-nav__list">
-                                <a
-                                    class="navbar-nav__link"
-                                    aria-current="page"
-                                    href="./../../../index.html"
-                                    >Home</a
-                                >
-                            </li>
-                            <li class="navbar-nav__list">
-                                <a
-                                    class="navbar-nav__link"
-                                    aria-current="page"
-                                    href="./index.html"
-                                    >Sign in</a
-                                >
-                            </li>
-                            <li class="navbar-nav__list">
-                                <a
-                                    class="navbar-nav__link"
-                                    aria-current="page"
-                                    href="./../../pages/signup/index.html"
-                                    >Sign up</a
-                                >
-                            </li>
-                            <li class="navbar-nav__list">
-                                <a
-                                    class="navbar-nav__link"
-                                    aria-current="page"
-                                    href="./../../pages/bookings/index.html"
-                                    >Bookings</a
-                                >
-                            </li>
-                            <li class="navbar-nav__list">
-                                <a
-                                    class="navbar-nav__link"
-                                    aria-current="page"
-                                    href="./../events/index.html"
-                                    >Events</a
-                                >
-                            </li>
-                        </ul>
+                    <ul class="navbar-nav">
+                        <li class="navbar-nav__list">
+                            <a class="navbar-nav__link" aria-current="page" href="./../../../index.html">Home</a>
+                        </li>
+                        <li class="navbar-nav__list">
+                            <a class="navbar-nav__link" aria-current="page" href="./index.html">Sign in</a>
+                        </li>
+                        <li class="navbar-nav__list">
+                            <a class="navbar-nav__link" aria-current="page" href="./../../pages/signup/index.html">Sign
+                                up</a>
+                        </li>
+                        <li class="navbar-nav__list">
+                            <a class="navbar-nav__link" aria-current="page"
+                                href="./../../pages/bookings/index.html">Bookings</a>
+                        </li>
+                        <li class="navbar-nav__list">
+                            <a class="navbar-nav__link" aria-current="page" href="./../events/index.html">Events</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
     </header>
 
     <main class="login">
-        <form class="login__form">
-            <div class="form__field">
-                <label class="form__label" for="useremail">Enter User Email :</label>
-                <input class="form__input" type="email" name="useremail" id="useremail" />
+        <!-- Sign in section -->
+        <section class="p-5 w-100">
+            <div >
+                <div>
+                    <h1 class="text-center">Sign in</h1>
+                </div>
+                <form class="login__form p-4">
+                    <div class="form__field">
+                        <label class="form__label" for="useremail">Enter User Email :</label>
+                        <input class="form__input" type="email" name="useremail" id="useremail" />
+                    </div>
+                    <div class="d-flex justify-content-center pt-3">
+                        <button class="button" id="signIn" type="submit">
+                            Sign In!
+                        </button>
+                    </div>
+                    <div id="error-message" class="form__error"></div>
+                </form>
             </div>
+        </section>
 
-            <button class="form__button form__button--primary" id="signIn" type="submit">
-                Sign In!
-            </button>
-
-            <div id="error-message" class="form__error"></div>
-        </form>
     </main>
 
     <footer class="footer">
