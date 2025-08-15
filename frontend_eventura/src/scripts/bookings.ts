@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         // Attach a single click listener to parent container (event delegation)
         bookedGrid?.addEventListener("click", async (e) => {
             const target = e.target as HTMLElement;
-            if (target.classList.contains("cancel-btn")) {
+            if (target.classList.contains("cancel-button")) {
                 const bookingId = target.getAttribute("data-id");
                 console.log(`booking id to cancel : ${bookingId}`);
                 console.log(`User id: ${getUserId()}`);
