@@ -119,7 +119,6 @@ Start the server: mvn spring-boot:run
 - Reduce repeated code and improve adherence to DRY principles
 - Add images for each event, using placeholder images when not available
 - Implement unit tests for both frontend and backend components
-- Allow users to delete bookings from the **My Bookings** section
 - Add secure payment integration for ticket purchases
 - Enable user profile editing
 - Introduce password-based authentication for enhanced security
