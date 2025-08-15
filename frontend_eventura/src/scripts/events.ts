@@ -66,7 +66,6 @@ form.addEventListener("submit", async (e) => {
             console.log("New Address saved:", createdAddress);
         }
 
-        .
         const payload: EventCreateRequest = {
             eventName: eventName.value.trim(),
             eventDescription: eventDescription.value.trim() || undefined,
