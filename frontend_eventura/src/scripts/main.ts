@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <h3 class="event-card__name">${event.eventName}</h3>
                 <p class="event-card__date">${formattedDate}</p>
                 <p class="event-card__location">${event.address.postcode}</p>
+                    <button class="small-button mt-3" data-id="${event.id}">Book</button>
             </article>
             </div>
         `;
