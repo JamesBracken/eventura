@@ -3,9 +3,8 @@
 @use "./base/typography.scss";
 @use "./components/inputform";
 @use "./components/bookings";
-
-$box-shadow: 0px 4px 12px -2px black, //palette.$clr-primary, // CHANGE TO PALETTE
-0px 3px 7px -3px black;//palette.$clr-primary;
+@use "./components/button";
+@use "./abstracts/mixins";
 
 //Used to push the footer down to the bottom
 body, html {
@@ -17,4 +16,14 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
+
+main {
+    padding-top: 80px;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
 }
