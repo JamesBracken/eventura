@@ -5,7 +5,7 @@ export const fetchUserBookingsData = async (): Promise<UserBookings> => {
     console.log("userid from getMyBookings: ", getUserId());
     try {
         const response = await fetch(
-            `http://localhost:8080/api/bookings/byUser/${getUserId()}`
+            `https://eventura-production.up.railway.app/api/bookings/byUser/${getUserId()}`
         );
         if (response.status !== 200) {
             throw new Error("Something went wrong!");

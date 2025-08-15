@@ -2,11 +2,14 @@ import type { BookEvents } from "../models/bookEvent";
 
 export const bookAnEvent = async (bookevent: BookEvents) => {
     try {
-        const response = await fetch(`http://localhost:8080/api/bookings`, {
-            headers: { "Content-Type": "application/json" },
-            method: "post",
-            body: JSON.stringify(bookevent),
-        });
+        const response = await fetch(
+            `https://eventura-production.up.railway.app/api/bookings`,
+            {
+                headers: { "Content-Type": "application/json" },
+                method: "post",
+                body: JSON.stringify(bookevent),
+            }
+        );
         if (!response.ok) {
             throw new Error(`Error booking an event: ${response.status}`);
         }
