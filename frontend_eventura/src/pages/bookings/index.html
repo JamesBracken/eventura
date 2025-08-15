@@ -55,7 +55,7 @@
         </nav>
     </header>
 
-    <main>
+    <main class="h-100">
         <div class="events">
             <h1 class="events__title">Future Events</h1>
             <section class="">
@@ -67,7 +67,14 @@
             <h2 class="booked__title">My Booked Events</h2>
             <section class="">
                 <div class="row booked__grid">
-
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-2 w-100">
+                        <article class="event-card h-100">
+                            <h3 class="event-card__name">${event.eventName}</h3>
+                            <p class="event-card__date">${formattedDate}</p>
+                            <p class="event-card__location">${event.address.postcode}</p>
+                            <button class="small-button" data-id="${event.id}">Book</button>
+                        </article>
+            </div>
                 </div>
             </section>
         </div>

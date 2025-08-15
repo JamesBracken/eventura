@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     };
 
-    const renderNyBookedEvents = async () => {
+    const renderMyBookedEvents = async () => {
         try {
             const bookedData = await fetchUserBookingsData();
 
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     eventsData = eventsData.filter(
                         (event) => event.id !== Number(eventId)
                     );
-                    renderNyBookedEvents();
+                    renderMyBookedEvents();
                     renderFutureEvents();
                 } catch (error) {
                     console.error("Booking failed:", error);
@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     eventsData = eventsData.filter(
                         (event) => event.bookingId !== Number(bookingId)
                     );
-                    renderNyBookedEvents();
+                    renderMyBookedEvents();
                     renderFutureEvents();
                 } catch (error) {
                     console.error("Booking cancellation failed:", error);
@@ -178,8 +178,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     };
 
-    await renderNyBookedEvents();
-    // await renderFutureEvents();
+    await renderMyBookedEvents();
     await getEvents();
     addFutureEventsAlert();
     cancelBookingAlert();
