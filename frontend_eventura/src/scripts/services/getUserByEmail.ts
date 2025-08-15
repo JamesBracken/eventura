@@ -1,5 +1,5 @@
 import type {User} from "../models/user"
-import { setUserId } from "../models/userState";
+import { setUserId,setAdminUser } from "./../models/userState";
 
 export const fetchData = async (email: string) :Promise<User>=> {
     try {
@@ -11,7 +11,8 @@ export const fetchData = async (email: string) :Promise<User>=> {
         }
         const data: User = await response.json();
         setUserId(data.id);
-        console.log("Fetched data",data);
+        setAdminUser(data.adminUser);
+        console.log("Fetched data ... ",data.adminUser,  data.email);
         return data;
     } catch (error) {
         console.error("Error fetching data:", error);

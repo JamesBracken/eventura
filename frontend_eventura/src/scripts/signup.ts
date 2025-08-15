@@ -4,7 +4,7 @@ import type { User } from "./models/user";
 import type { NewAddress } from "./models/newAddress";
 import type { Address } from "./models/address";
 import { createNewAddress } from "./services/createNewAddress";
-import { setUserId, getUserId, setIsAdminUser,getIsAdminUser } from "./models/userState";
+import { setUserId, getUserId, setAdminUser,getAdminUser } from "./models/userState";
 import "./../styles/main.scss";
 
 // Grab the form & input
@@ -46,13 +46,13 @@ form.addEventListener("submit", async (e) => {
             address: {
                 id: createdAddress.id,
             },
-            isAdminUser: false, // or true if needed
+            isAdminUser: false, 
         };
 
             const createdUser : User = await createNewUser(newUserData);
             setUserId(createdUser.id);
-            setIsAdminUser(createdUser.isAdminUser);
-            console.log("New user saved:", createdUser, getUserId(), getIsAdminUser());
+            setAdminUser(createdUser.adminUser);
+            console.log("New user saved:", createdUser, getUserId(), getAdminUser());
             errorMessageEl.textContent = "You have successfully logged in!";
             window.location.href = "./../bookings/index.html";
             return createdUser;

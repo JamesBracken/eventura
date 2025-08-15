@@ -15,5 +15,5 @@ export interface User {
     } ;
     createdDate: Date;
     updatedDate: Date;
-    isAdminUser: boolean;
+    adminUser: boolean;
 }

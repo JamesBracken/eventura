@@ -3,7 +3,7 @@ import { fetchUserBookingsData } from "./services/getUserBookings";
 import { bookAnEvent } from "./services/bookAnEvent";
 import { cancelABooking } from "./services/cancelABooking"
 import type { BookEvents } from "./models/bookEvent";
-import { getUserId, getIsAdminUser } from "./models/userState";
+import { getUserId, getAdminUser } from "./models/userState";
 import { getAllEvents } from "./services/eventsService";
 let eventsData: any[] = [];
 
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const futureEvents = document.querySelector(".events__grid") as HTMLElement;
     const bookedGrid = document.querySelector<HTMLElement>(".booked__grid");
 
-    console.log("insidebookings: ", getIsAdminUser());
+    console.log("insidebookings: ", getAdminUser());
     const getEvents = async () => {
         try {
             eventsData = await getAllEvents(); // store once at startup
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     "Enter number of tickets:",
                     "1"
                 );
-                if (!ticketsStr) return; // user cancelled
+                if (!ticketsStr) return; // user cancelled - don't want to book
                 const noOfTickets = Number(ticketsStr);
                 if (isNaN(noOfTickets) || noOfTickets <= 0) {
                     alert("Please enter a valid number of tickets.");
