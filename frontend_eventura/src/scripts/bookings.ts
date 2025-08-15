@@ -6,6 +6,7 @@ import type { BookEvents } from "./models/bookEvent";
 import { getUserId, getAdminUser } from "./models/userState";
 import { getAllEvents } from "./services/eventsService";
 let eventsData: any[] = [];
+const today = new Date();
 
 document.addEventListener("DOMContentLoaded", async () => {
     const errorMessageEl =
@@ -33,6 +34,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         try {
             if (futureEvents && Array.isArray(eventsData)) {
                 futureEvents.innerHTML = eventsData
+                 .filter(event => new Date(event.startDate) >= today)
                     .map((event) => {
                         // Convert ISO date string to Date object
                         const date = new Date(event.startDate);
@@ -100,7 +102,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     .join("");
             }
         } catch (err) {
-            console.error("Error in login process:", err);
+            console.error("Error in future events process:", err);
             if (errorMessageEl) {
                 if (err instanceof Error) {
                     errorMessageEl.textContent = err.message;
