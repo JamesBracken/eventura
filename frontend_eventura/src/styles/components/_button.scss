@@ -12,13 +12,11 @@
     &:hover {
         background-color: palette.$color-secondary;
         transition: 300ms ease-in-out;
-        // @include mixins.box-shadow-effect();
     }
 }
 
-
 .small-button {
-        padding: 5px 20px;
+    padding: 5px 20px;
     border: none;
     background-color: palette.$color-primary;
     font-weight: typography.$fw-bold;
@@ -27,6 +25,18 @@
     &:hover {
         background-color: palette.$color-secondary;
         transition: 300ms ease-in-out;
-        // @include mixins.box-shadow-effect(palette.$color-secondary);
+    }
+}
+
+.cancel-button {
+    padding: 5px 20px;
+    border: none;
+    background-color: rgba(224, 82, 96, 1);
+    font-weight: typography.$fw-bold;
+    color: white;
+
+    &:hover {
+        background-color: rgba(231, 116, 128, 1);
+        transition: 300ms ease-in-out;
     }
 }
