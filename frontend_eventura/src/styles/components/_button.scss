@@ -1,0 +1,32 @@
+@use "../abstracts/palette";
+@use "../abstracts/mixins";
+@use "../base/typography.scss";
+
+.button {
+    padding: 8px 40px;
+    border: none;
+    background-color: palette.$color-primary;
+    font-weight: typography.$fw-bold;
+    color: white;
+
+    &:hover {
+        background-color: palette.$color-secondary;
+        transition: 300ms ease-in-out;
+        // @include mixins.box-shadow-effect();
+    }
+}
+
+
+.small-button {
+        padding: 5px 20px;
+    border: none;
+    background-color: palette.$color-primary;
+    font-weight: typography.$fw-bold;
+    color: white;
+
+    &:hover {
+        background-color: palette.$color-secondary;
+        transition: 300ms ease-in-out;
+        // @include mixins.box-shadow-effect(palette.$color-secondary);
+    }
+}

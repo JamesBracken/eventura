@@ -43,12 +43,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                         );
 
                         return `
-            <article class="event-card">
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-2">
+            <article class="event-card h-100">
                 <h3 class="event-card__name">${event.eventName}</h3>
                 <p class="event-card__date">${formattedDate}</p>
                 <p class="event-card__location">${event.address.postcode}</p>
-
+                    <button class="small-button mt-3" data-id="${event.id}">Book</button>
             </article>
+            </div>
         `;
                     })
                     .join("");

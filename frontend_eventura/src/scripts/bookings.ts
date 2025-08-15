@@ -1,7 +1,7 @@
 import "./../styles/main.scss";
 import { fetchUserBookingsData } from "./services/getUserBookings";
 import { bookAnEvent } from "./services/bookAnEvent";
-import {cancelABooking} from "./services/cancelABooking"
+import { cancelABooking } from "./services/cancelABooking"
 import type { BookEvents } from "./models/bookEvent";
 import { getUserId, getAdminUser } from "./models/userState";
 import { getAllEvents } from "./services/eventsService";
@@ -50,12 +50,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                         );
 
                         return `
-                        <article class="event-card">
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-2">
+                        <article class="event-card h-100">
                             <h3 class="event-card__name">${event.eventName}</h3>
                             <p class="event-card__date">${formattedDate}</p>
                             <p class="event-card__location">${event.address.postcode}</p>
-                            <button class="book-btn" data-id="${event.id}">Book</button>
+                            <button class="small-button" data-id="${event.id}">Book</button>
                         </article>
+            </div>
                     `;
                     })
                     .join("");
@@ -85,12 +87,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                 bookedGrid.innerHTML = bookedData
                     .map(
                         (event) => `
-                        <article class="event-card">
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-2">
+                        <article class="event-card h-100">
                             <h3 class="event-card__name">${event.eventName}</h3>
                             <p class="event-card__noTickets">Tickets: ${event.noOfEventTickets}</p>
                             <p class="event-card__location">Location:${event.address.postcode}</p>
                             <button class="cancel-btn" data-id="${event.bookingId}">Cancel</button>
                         </article>
+                        </div>
                     `
                     )
                     .join("");
@@ -112,7 +116,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         // Attach a single click listener to parent container (event delegation)
         futureEvents.addEventListener("click", async (e) => {
             const target = e.target as HTMLElement;
-            if (target.classList.contains("book-btn")) {
+            if (target.classList.contains("small-button")) {
                 const eventId = target.getAttribute("data-id");
                 console.log(`event id to book to: ${eventId}`);
                 console.log(`User id: ${getUserId()}`);
