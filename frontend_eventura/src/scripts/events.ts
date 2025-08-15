@@ -66,11 +66,12 @@ form.addEventListener("submit", async (e) => {
             console.log("New Address saved:", createdAddress);
         }
 
+        // build the payload as you do now...
         const payload: EventCreateRequest = {
             eventName: eventName.value.trim(),
             eventDescription: eventDescription.value.trim() || undefined,
             organiser: { email: organiserEmail.value.trim() },
-            createdBy: { email: createdByEmail.value.trim() }, // ← restored
+            createdBy: { email: organiserEmail.value.trim() }, // mirror organiser
             address: createdAddress ? { id: createdAddress.id } : undefined,
             location: locationInput.value.trim() || undefined,
             noOfEventDates: noOfEventDates.value
@@ -86,11 +87,10 @@ form.addEventListener("submit", async (e) => {
             endDate: endDate.value,
         };
 
-        // Validation
+ 
         if (
             !payload.eventName ||
             !payload.organiser.email ||
-            !payload.createdBy.email ||
             !payload.startDate ||
             !payload.endDate
         ) {
