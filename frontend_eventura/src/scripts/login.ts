@@ -1,4 +1,4 @@
-import { setUserId, getUserId, setIsAdminUser, getIsAdminUser } from "./models/userState";
+import { setUserId, getUserId, setAdminUser, getAdminUser } from "./models/userState";
 import { fetchData } from "./services/getUserByEmail"; // adjust path as needed
 import "./../styles/main.scss";
 
@@ -21,9 +21,9 @@ if (form && emailInput) {
 
         try {
             const user = await fetchData(email);
-            setUserId(user.id)
-            setIsAdminUser(user.isAdminUser);
-            console.log("Fetched user by email :", user, getUserId(), user.id, user.isAdminUser, getIsAdminUser());
+             setUserId(user.id)
+             setAdminUser(user.adminUser);
+            console.log("Fetched user by email :", user, getUserId(), user.id, user.adminUser, getAdminUser());
             errorMessageEl.textContent = "You have successfully logged in!";
             // redirect to bookings
             window.location.href = "./../bookings/index.html";
