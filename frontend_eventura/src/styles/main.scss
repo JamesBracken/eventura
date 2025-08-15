@@ -16,15 +16,20 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #F9F9F9;
+    // background-color: #F9F9F9;
 }
 
 main {
     padding-top: 80px;
+    background-image: url("https://hoffnungsfestival.de/wp-content/uploads/2024/07/Seifenblasenkinder-2048x1366.jpg");
 }
 
 header {
     position: fixed;
     width: 100%;
     z-index: 1000;
+}
+
+img {
+    object-fit: cover;
 }

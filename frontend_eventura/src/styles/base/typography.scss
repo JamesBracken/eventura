@@ -1,4 +1,5 @@
 @use "../abstracts/mixins";
+@use "../abstracts/palette";
 
 // Resetting base styles for typography here
 
@@ -61,10 +62,13 @@ $fw-semi-bold: 550;
 $fw-medium: 425;
 $fw-regular: 300;
 
+$color-text-white: palette.$color-white;
 
 h1 {
     font-size: $fs-heading-1;
     font-family: $text-primary;
+    color:  $color-text-white;
+    font-weight: $fw-bold;
 
     // @include mixins.small-screen() {
     //     font-size: $fs-heading-1-sm;
