@@ -1,11 +1,13 @@
+const URL = "http://localhost:8080/api/";
+
 export const cancelABooking = async (bookingId: number) => {
     console.log("in cancelABooking", bookingId);
     try {
         const response = await fetch(
-            `https://eventura-production.up.railway.app/api/bookings/${bookingId}`,
+            `${URL}bookings/${bookingId}`,
             {
                 headers: { "Content-Type": "application/json" },
-                method: "DELETE"
+                method: "DELETE",
             }
         );
         if (!response.ok) {

@@ -1,11 +1,14 @@
 import type { UserBookings } from "./../models/userBookings";
 import { getUserId } from "./../models/userState";
 
+
+
 export const fetchUserBookingsData = async (): Promise<UserBookings> => {
-    console.log("userid from getMyBookings: ", getUserId());
+    const URL = "http://localhost:8080/api/";
+    // console.log("userid from getMyBookings: ", getUserId());
     try {
         const response = await fetch(
-            `https://eventura-production.up.railway.app/api/bookings/byUser/${getUserId()}`
+            `${URL}bookings/byUser/${getUserId()}`
         );
         if (response.status !== 200) {
             throw new Error("Something went wrong!");

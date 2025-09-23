@@ -20,6 +20,17 @@ public class Address {
     @JsonBackReference
     private List<User> users;
 
+    public Address(String addressLine1, String addressLine2, String postcode, String city, String country) {
+        this.addressLine1 = addressLine1;
+        this.addressLine2 = addressLine2;
+        this.postcode = postcode;
+        this.city = city;
+        this.country = country;
+    }
+
+    public Address() {
+    }
+
     public Long getId() {
         return id;
     }

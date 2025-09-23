@@ -29,14 +29,6 @@ public class Event {
 @Column(name = "location")
 private String location;
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
     @ManyToOne
     @JoinColumn(name = "createdBy")
     private User createdBy;
@@ -47,6 +39,26 @@ private String location;
     private LocalDateTime endDate;
 
     // Getters and setters...
+
+    public Event(String eventName, String eventDescription, User organiser, int noOfEventDates,
+                 int maxCapacity, Double costPerPerson, Address address, String location,
+                 User createdByUser, LocalDateTime createdDate, LocalDateTime updatedDate, LocalDateTime startDate, LocalDateTime endDate) {
+        this.eventName = eventName;
+        this.eventDescription = eventDescription;
+        this.organiser = organiser;
+        this.noOfEventDates = noOfEventDates;
+        this.maxCapacity = maxCapacity;
+        this.costPerPerson = costPerPerson;
+        this.address = address;
+        this.location = location;
+        this.createdBy = createdByUser;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+    public Event() {
+    }
 
     public LocalDateTime getEndDate() {
         return endDate;
@@ -96,4 +108,13 @@ private String location;
 
     public LocalDateTime getUpdatedDate() { return updatedDate; }
     public void setUpdatedDate(LocalDateTime updatedDate) { this.updatedDate = updatedDate; }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
 }

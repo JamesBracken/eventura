@@ -1,6 +1,7 @@
 import type { EventCreateRequest, Event } from "../models/event";
 
-const BASE_URL = "https://eventura-production.up.railway.app/api/events";
+// const BASE_URL = "https://eventura-production.up.railway.app/api/events";
+const BASE_URL = "http://localhost:8080/api/events"
 
 // Creating a new event
 export const createNewEvent = async (
@@ -24,6 +25,7 @@ export const createNewEvent = async (
 // // READ – all
 export const getAllEvents = async (): Promise<Event[]> => {
     try {
+        console.log(BASE_URL);
         const res = await fetch(BASE_URL);
         if (!res.ok) throw new Error(`Error fetching events: ${res.status}`);
         const data: Event[] = await res.json();
