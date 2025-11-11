@@ -19,6 +19,16 @@ public class Booking {
     @JoinColumn(name = "event_id")
     private Event event;
 
+    public Booking(short noOfEventTickets, double totalCost, boolean isCancelled, User user,Event event) {
+        this.noOfEventTickets = noOfEventTickets;
+        this.totalCost =  totalCost;
+        this.isCancelled = isCancelled;
+        this.user = user;
+        this.event = event;
+    }
+
+    public Booking(){}
+
     public Long getBookingId() {
         return bookingId;
     }
