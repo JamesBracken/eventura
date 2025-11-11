@@ -1,10 +1,12 @@
 import type { NewAddress } from "../models/newAddress";
 import type { Address } from "../models/address";
 
+const URL = "http://localhost:8080/api/";
+
 export const createNewAddress = async (address: NewAddress): Promise<Address>=> {
     try {
         const response = await fetch(
-            `https://eventura-production.up.railway.app/api/addresses`,
+            `${URL}addresses`,
             {
                 headers: { "Content-Type": "application/json" },
                 method: "post",

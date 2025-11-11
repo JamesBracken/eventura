@@ -1,9 +1,11 @@
 import type { BookEvents } from "../models/bookEvent";
 
+const URL = "http://localhost:8080/api/";
+
 export const bookAnEvent = async (bookevent: BookEvents) => {
     try {
         const response = await fetch(
-            `https://eventura-production.up.railway.app/api/bookings`,
+            `${URL}bookings`,
             {
                 headers: { "Content-Type": "application/json" },
                 method: "post",

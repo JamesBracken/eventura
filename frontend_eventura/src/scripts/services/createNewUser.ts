@@ -1,10 +1,12 @@
 import type { NewUser } from "../models/newUser";
 import type { User } from "../models/user";
 
+const URL = "http://localhost:8080/api/";
+
 export const createNewUser = async (user: NewUser): Promise<User>=> {
     try {
         const response = await fetch(
-            `https://eventura-production.up.railway.app/api/users`,
+            `${URL}users`,
             {
                 headers: { "Content-Type": "application/json" },
                 method: "post",

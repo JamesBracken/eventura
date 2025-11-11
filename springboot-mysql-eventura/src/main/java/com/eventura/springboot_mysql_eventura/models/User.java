@@ -28,6 +28,20 @@ public class User {
     @JsonIgnoreProperties({"users"})
     private Address address;
 
+    public User(String firstName, String lastName, String email, String phoneNo, boolean isAdminUser,Date dob, LocalDateTime createdDate, LocalDateTime updatedDate, Address address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNo = phoneNo;
+        this.isAdminUser = isAdminUser;
+        this.dob = dob;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+        this.address= address;
+    }
+    public User() {
+    }
+
     public Long getId() {
         return id;
     }
