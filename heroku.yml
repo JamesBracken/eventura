@@ -1,4 +1,4 @@
 build:
+  root: springboot-mysql-eventura
   languages:
     - java
-root: springboot-mysql-eventura
