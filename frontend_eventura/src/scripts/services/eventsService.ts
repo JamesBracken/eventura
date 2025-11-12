@@ -15,7 +15,6 @@ export const createNewEvent = async (
         });
         if (!res.ok) throw new Error(`Error creating event: ${res.status}`);
         const data: Event = await res.json();
-        console.log("Event created", data);
         return data;
     } catch (error) {
         console.error("Error creating event:", error);
@@ -25,11 +24,9 @@ export const createNewEvent = async (
 // // READ – all
 export const getAllEvents = async (): Promise<Event[]> => {
     try {
-        console.log(BASE_URL);
         const res = await fetch(BASE_URL);
         if (!res.ok) throw new Error(`Error fetching events: ${res.status}`);
         const data: Event[] = await res.json();
-        console.log("Fetched events", data);
         return data;
     } catch (error) {
         console.error("Error fetching events:", error);
@@ -43,7 +40,6 @@ export const getEventById = async (id: number): Promise<Event> => {
         const res = await fetch(`${BASE_URL}/${id}`);
         if (!res.ok) throw new Error(`Error fetching event: ${res.status}`);
         const data: Event = await res.json();
-        console.log("Fetched event", data);
         return data;
     } catch (error) {
         console.error("Error fetching event:", error);
@@ -64,7 +60,6 @@ export const updateEventById = async (
         });
         if (!res.ok) throw new Error(`Error updating event: ${res.status}`);
         const data: Event = await res.json();
-        console.log("Event updated", data);
         return data;
     } catch (error) {
         console.error("Error updating event:", error);
@@ -79,7 +74,6 @@ export const deleteEventById = async (id: number): Promise<void> => {
             method: "DELETE",
         });
         if (!res.ok) throw new Error(`Error deleting event: ${res.status}`);
-        console.log("Event deleted");
     } catch (error) {
         console.error("Error deleting event:", error);
         throw error;

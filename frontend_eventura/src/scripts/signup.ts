@@ -35,7 +35,6 @@ form.addEventListener("submit", async (e) => {
     };
     try {
         const createdAddress : Address = await createNewAddress(newAddressData);
-        console.log("New Address saved:", createdAddress);
 
         const newUserData: NewUser = {
             firstName: firstNameInput.value.trim(),
@@ -52,7 +51,6 @@ form.addEventListener("submit", async (e) => {
             const createdUser : User = await createNewUser(newUserData);
             setUserId(createdUser.id);
             setAdminUser(createdUser.adminUser);
-            console.log("New user saved:", createdUser, getUserId(), getAdminUser());
             errorMessageEl.textContent = "You have successfully logged in!";
             window.location.href = "./../bookings/index.html";
             return createdUser;

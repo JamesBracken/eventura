@@ -16,7 +16,6 @@ export const bookAnEvent = async (bookevent: BookEvents) => {
             throw new Error(`Error booking an event: ${response.status}`);
         }
         const data = await response.json();
-        console.log("Event booked",data);
         return data;
     } catch (error) {
         console.error("Error fetching data:", error);

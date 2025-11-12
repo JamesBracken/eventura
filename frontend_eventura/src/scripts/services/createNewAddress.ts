@@ -17,7 +17,6 @@ export const createNewAddress = async (address: NewAddress): Promise<Address>=> 
             throw new Error(`Error creating address: ${response.status}`);
         }
         const data: Address = await response.json();
-        console.log("Address created",data);
         return data;
     } catch (error) {
         console.error("Error fetching data:", error);

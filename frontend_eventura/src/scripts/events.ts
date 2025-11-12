@@ -63,7 +63,6 @@ form.addEventListener("submit", async (e) => {
                 country: country.value.trim(),
             };
             createdAddress = await createNewAddress(newAddressData);
-            console.log("New Address saved:", createdAddress);
         }
 
         const payload: EventCreateRequest = {
@@ -100,11 +99,9 @@ form.addEventListener("submit", async (e) => {
 
         if (editingId === null) {
             const created: Event = await createNewEvent(payload);
-            console.log("Event created:", created);
             msg.textContent = "Event created successfully.";
         } else {
             await updateEventById(editingId, payload);
-            console.log("Event updated:", editingId);
             msg.textContent = "Event updated successfully.";
             editingId = null;
             (

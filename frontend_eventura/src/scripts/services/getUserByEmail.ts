@@ -6,7 +6,6 @@ const URL = "http://localhost:8080/api/";
 export const fetchData = async (email: string) :Promise<User>=> {
 
     const BASE_URL = URL + "users/byEmail/";
-    console.log("BASE URL : ", BASE_URL)
     try {
         const response = await fetch(
             `${BASE_URL}${email}`
@@ -17,7 +16,6 @@ export const fetchData = async (email: string) :Promise<User>=> {
         const data: User = await response.json();
         setUserId(data.id);
         setAdminUser(data.adminUser);
-        console.log("Fetched data ... ",data.adminUser,  data.email);
         return data;
     } catch (error) {
         console.error("Error fetching data:", error);
