@@ -5,6 +5,7 @@ import { cancelABooking } from "./services/cancelABooking"
 import type { BookEvents } from "./models/bookEvent";
 import { getUserId, getAdminUser } from "./models/userState";
 import { getAllEvents } from "./services/eventsService";
+
 let eventsData: any[] = [];
 const today = new Date();
 

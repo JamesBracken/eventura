@@ -1,7 +1,7 @@
 import type { EventCreateRequest, Event } from "../models/event";
+import {API_URL} from "../constants";
 
-// const BASE_URL = "https://eventura-production.up.railway.app/api/events";
-const BASE_URL = "http://localhost:8080/api/events"
+const BASE_URL = `${API_URL}api/events`;
 
 // Creating a new event
 export const createNewEvent = async (

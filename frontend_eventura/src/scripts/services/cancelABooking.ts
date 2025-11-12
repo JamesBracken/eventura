@@ -1,9 +1,10 @@
-const URL = "http://localhost:8080/api/";
+import {API_URL} from "../constants";
 
+const BASE_URL = `${API_URL}api/`;
 export const cancelABooking = async (bookingId: number) => {
     try {
         const response = await fetch(
-            `${URL}bookings/${bookingId}`,
+            `${BASE_URL}bookings/${bookingId}`,
             {
                 headers: { "Content-Type": "application/json" },
                 method: "DELETE",

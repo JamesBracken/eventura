@@ -1,7 +1,8 @@
 import type { NewAddress } from "../models/newAddress";
 import type { Address } from "../models/address";
+import {API_URL} from "../constants";
 
-const URL = "http://localhost:8080/api/";
+const BASE_URL = `${API_URL}api/`;
 
 export const createNewAddress = async (address: NewAddress): Promise<Address>=> {
     try {
