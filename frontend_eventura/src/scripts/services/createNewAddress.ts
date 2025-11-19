@@ -7,7 +7,7 @@ const BASE_URL = `${API_URL}api/`;
 export const createNewAddress = async (address: NewAddress): Promise<Address>=> {
     try {
         const response = await fetch(
-            `${URL}addresses`,
+            `${BASE_URL}addresses`,
             {
                 headers: { "Content-Type": "application/json" },
                 method: "post",

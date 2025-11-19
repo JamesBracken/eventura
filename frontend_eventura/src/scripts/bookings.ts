@@ -3,7 +3,7 @@ import { fetchUserBookingsData } from "./services/getUserBookings";
 import { bookAnEvent } from "./services/bookAnEvent";
 import { cancelABooking } from "./services/cancelABooking"
 import type { BookEvents } from "./models/bookEvent";
-import { getUserId, getAdminUser } from "./models/userState";
+import { getUserId } from "./models/userState";
 import { getAllEvents } from "./services/eventsService";
 
 let eventsData: any[] = [];
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 };
 
                 try {
-                    const result = await bookAnEvent(bookEventData);
+                    await bookAnEvent(bookEventData);
                     eventsData = eventsData.filter(
                         (event) => event.id !== Number(eventId)
                     );
@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const bookingId = target.getAttribute("data-id");
 
                 try {
-                    const result = await cancelABooking(Number(bookingId));
+                    await cancelABooking(Number(bookingId));
                     eventsData = eventsData.filter(
                         (event) => event.bookingId !== Number(bookingId)
                     );

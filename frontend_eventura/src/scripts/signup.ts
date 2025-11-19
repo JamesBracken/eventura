@@ -4,7 +4,7 @@ import type { User } from "./models/user";
 import type { NewAddress } from "./models/newAddress";
 import type { Address } from "./models/address";
 import { createNewAddress } from "./services/createNewAddress";
-import { setUserId, getUserId, setAdminUser,getAdminUser } from "./models/userState";
+import { setUserId, setAdminUser } from "./models/userState";
 import "./../styles/main.scss";
 
 // Grab the form & input

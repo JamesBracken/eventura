@@ -1,6 +1,6 @@
 import "./../styles/main.scss";
 
-import type { EventCreateRequest, Event } from "./models/event";
+import type { EventCreateRequest } from "./models/event";
 import type { NewAddress } from "./models/newAddress";
 import type { Address } from "./models/address";
 
@@ -98,7 +98,7 @@ form.addEventListener("submit", async (e) => {
         }
 
         if (editingId === null) {
-            const created: Event = await createNewEvent(payload);
+            await createNewEvent(payload);
             msg.textContent = "Event created successfully.";
         } else {
             await updateEventById(editingId, payload);
