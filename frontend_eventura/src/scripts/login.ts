@@ -1,4 +1,4 @@
-import { setUserId, getUserId, setAdminUser, getAdminUser } from "./models/userState";
+import { setUserId, setAdminUser } from "./models/userState";
 import { fetchData } from "./services/getUserByEmail"; // adjust path as needed
 import "./../styles/main.scss";
 
