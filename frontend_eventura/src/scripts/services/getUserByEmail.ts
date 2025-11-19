@@ -1,12 +1,10 @@
-import type {User} from "../models/user"
-import { setUserId,setAdminUser } from "./../models/userState";
+import type { User } from "../models/user"
+import { setUserId, setAdminUser } from "./../models/userState";
+import { API_URL } from "../constants";
 
-const URL = "http://localhost:8080/api/";
+export const fetchData = async (email: string): Promise<User> => {
 
-export const fetchData = async (email: string) :Promise<User>=> {
-
-    const BASE_URL = URL + "users/byEmail/";
-    console.log("BASE URL : ", BASE_URL)
+    const BASE_URL = `${API_URL}api/users/byEmail/`;
     try {
         const response = await fetch(
             `${BASE_URL}${email}`
@@ -17,7 +15,6 @@ export const fetchData = async (email: string) :Promise<User>=> {
         const data: User = await response.json();
         setUserId(data.id);
         setAdminUser(data.adminUser);
-        console.log("Fetched data ... ",data.adminUser,  data.email);
         return data;
     } catch (error) {
         console.error("Error fetching data:", error);

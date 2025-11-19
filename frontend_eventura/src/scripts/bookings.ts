@@ -5,6 +5,7 @@ import { cancelABooking } from "./services/cancelABooking"
 import type { BookEvents } from "./models/bookEvent";
 import { getUserId, getAdminUser } from "./models/userState";
 import { getAllEvents } from "./services/eventsService";
+
 let eventsData: any[] = [];
 const today = new Date();
 
@@ -14,7 +15,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const futureEvents = document.querySelector(".events__grid") as HTMLElement;
     const bookedGrid = document.querySelector<HTMLElement>(".booked__grid");
 
-    console.log("insidebookings: ", getAdminUser());
     const getEvents = async () => {
         try {
             eventsData = await getAllEvents(); // store once at startup
@@ -120,8 +120,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             const target = e.target as HTMLElement;
             if (target.classList.contains("small-button")) {
                 const eventId = target.getAttribute("data-id");
-                console.log(`event id to book to: ${eventId}`);
-                console.log(`User id: ${getUserId()}`);
 
                 const ticketsStr = window.prompt(
                     "Enter number of tickets:",
@@ -141,7 +139,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                 try {
                     const result = await bookAnEvent(bookEventData);
-                    console.log("Booked an event successfully:", result);
                     eventsData = eventsData.filter(
                         (event) => event.id !== Number(eventId)
                     );
@@ -160,12 +157,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             const target = e.target as HTMLElement;
             if (target.classList.contains("cancel-button")) {
                 const bookingId = target.getAttribute("data-id");
-                console.log(`booking id to cancel : ${bookingId}`);
-                console.log(`User id: ${getUserId()}`);
 
                 try {
                     const result = await cancelABooking(Number(bookingId));
-                    console.log("Booked an event successfully:", result);
                     eventsData = eventsData.filter(
                         (event) => event.bookingId !== Number(bookingId)
                     );

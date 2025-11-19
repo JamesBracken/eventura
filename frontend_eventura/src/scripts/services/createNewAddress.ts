@@ -1,7 +1,8 @@
 import type { NewAddress } from "../models/newAddress";
 import type { Address } from "../models/address";
+import {API_URL} from "../constants";
 
-const URL = "http://localhost:8080/api/";
+const BASE_URL = `${API_URL}api/`;
 
 export const createNewAddress = async (address: NewAddress): Promise<Address>=> {
     try {
@@ -17,7 +18,6 @@ export const createNewAddress = async (address: NewAddress): Promise<Address>=> 
             throw new Error(`Error creating address: ${response.status}`);
         }
         const data: Address = await response.json();
-        console.log("Address created",data);
         return data;
     } catch (error) {
         console.error("Error fetching data:", error);

@@ -23,7 +23,6 @@ if (form && emailInput) {
             const user = await fetchData(email);
              setUserId(user.id)
              setAdminUser(user.adminUser);
-            console.log("Fetched user by email :", user, getUserId(), user.id, user.adminUser, getAdminUser());
             errorMessageEl.textContent = "You have successfully logged in!";
             // redirect to bookings
             window.location.href = "./../bookings/index.html";

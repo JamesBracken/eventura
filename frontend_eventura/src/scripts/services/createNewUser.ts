@@ -1,12 +1,13 @@
 import type { NewUser } from "../models/newUser";
 import type { User } from "../models/user";
+import {API_URL} from "../constants";
 
-const URL = "http://localhost:8080/api/";
+const BASE_URL = `${API_URL}api/`;
 
 export const createNewUser = async (user: NewUser): Promise<User>=> {
     try {
         const response = await fetch(
-            `${URL}users`,
+            `${BASE_URL}users`,
             {
                 headers: { "Content-Type": "application/json" },
                 method: "post",
@@ -17,7 +18,6 @@ export const createNewUser = async (user: NewUser): Promise<User>=> {
             throw new Error(`Error creating user: ${response.status}`);
         }
         const data: User = await response.json();
-        console.log("User created",data);
         return data;
     } catch (error) {
         console.error("Error fetching data:", error);

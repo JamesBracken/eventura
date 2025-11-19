@@ -1,11 +1,12 @@
 import type { BookEvents } from "../models/bookEvent";
+import {API_URL} from "../constants";
 
-const URL = "http://localhost:8080/api/";
+const BASE_URL = `${API_URL}api/`;
 
 export const bookAnEvent = async (bookevent: BookEvents) => {
     try {
         const response = await fetch(
-            `${URL}bookings`,
+            `${BASE_URL}bookings`,
             {
                 headers: { "Content-Type": "application/json" },
                 method: "post",
@@ -16,7 +17,6 @@ export const bookAnEvent = async (bookevent: BookEvents) => {
             throw new Error(`Error booking an event: ${response.status}`);
         }
         const data = await response.json();
-        console.log("Event booked",data);
         return data;
     } catch (error) {
         console.error("Error fetching data:", error);
