@@ -2,47 +2,56 @@
 @use "../abstracts/palette";
 @use "../base/typography.scss";
 
-.navbar-nav {
+.navbar {
 
     display: flex;
-
-    &__link {
-        position: relative;
-        display: inline-block;
-        margin: 0px 15px;
-        text-decoration: none;
-        color: black;
-        display: inline;
-
-        &--active {
-            color: palette.$color-secondary;
-            font-weight: typography.$fw-bold;
-        }
-
-        &:hover {
-            color: palette.$color-secondary;
-            transition: 300ms ease-in-out;
-        }
-
-        &:after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            background-color: palette.$color-secondary; // Change color to global vars
-            height: 2px;
-            width: 0;
-            transition: width 300ms;
-        }
-
-        &:hover:after {
-            width: 100%;
-        }
+    background-color: rgba(252, 252, 252, 1);
+    
+    &__logo-container {
+        height: 50px;
+        width: 200px;
+        margin: 3px;
     }
+    &-nav {
 
-    &__list {
-        display: block;
-        padding: 5px 0px;
+        &__link {
+            position: relative;
+            display: inline-block;
+            margin: 0px 15px;
+            text-decoration: none;
+            color: black;
+            display: inline;
+
+            &--active {
+                color: palette.$color-secondary;
+                font-weight: typography.$fw-bold;
+            }
+
+            &:hover {
+                color: palette.$color-secondary;
+                transition: 300ms ease-in-out;
+            }
+
+            &:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -5px;
+                background-color: palette.$color-secondary; // Change color to global vars
+                height: 2px;
+                width: 0;
+                transition: width 300ms;
+            }
+
+            &:hover:after {
+                width: 100%;
+            }
+        }
+
+        &__list {
+            display: block;
+            padding: 5px 0px;
+        }
     }
 
 }

@@ -24,9 +24,13 @@
 <body>
     <header>
         <!-- Bootstrap navbar -->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="./index.html">Eventura Logo</a>
+                <div class="navbar__logo-container">
+                    <a class="navbar-brand" href="../../../index.html">
+                        <img src="../../../public/eventura-logo.jpg" class="w-100 h-100" />
+                    </a>
+                </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -44,7 +48,8 @@
                             <a class="navbar-nav__link" href="./../signup/index.html">Sign up</a>
                         </li>
                         <li class="navbar-nav__list">
-                            <a class="navbar-nav__link navbar-nav__link--active" aria-current="page" href="./index.html">Bookings</a>
+                            <a class="navbar-nav__link navbar-nav__link--active" aria-current="page"
+                                href="./index.html">Bookings</a>
                         </li>
                         <li class="navbar-nav__list">
                             <a class="navbar-nav__link" href="./../events/index.html">Event Planner</a>
@@ -67,14 +72,14 @@
             <h2 class="booked__title">My Booked Events</h2>
             <section class="">
                 <div class="row booked__grid">
-            <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-2 w-100">
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-2 w-100">
                         <article class="event-card h-100">
                             <h3 class="event-card__name">${event.eventName}</h3>
                             <p class="event-card__date">${formattedDate}</p>
                             <p class="event-card__location">${event.address.postcode}</p>
                             <button class="small-button" data-id="${event.id}">Book</button>
                         </article>
-            </div>
+                    </div>
                 </div>
             </section>
         </div>
