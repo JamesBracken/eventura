@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/addresses")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://jamesbracken.github.io")
 public class AddressController {
     private final AddressService addressService;
 
