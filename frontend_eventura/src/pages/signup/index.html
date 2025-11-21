@@ -23,9 +23,13 @@
 <body>
     <header>
         <!-- Bootstrap navbar -->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="./index.html">Eventura Logo</a>
+                <div class="navbar__logo-container">
+                    <a class="navbar-brand" href="../../../index.html">
+                        <img src="../../../public/eventura-logo.jpg" class="w-100 h-100" />
+                    </a>
+                </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -37,17 +41,19 @@
                             <a class="navbar-nav__link" aria-current="page" href="./../../../index.html">Home</a>
                         </li>
                         <li class="navbar-nav__list">
-                            <a class="navbar-nav__link" aria-current="page" href="./../../pages/login/index.html">Login</a>
-                        </li>
-                        <li class="navbar-nav__list">
-                            <a class="navbar-nav__link navbar-nav__link--active" aria-current="page" href="./index.html">Sign up</a>
-                        </li>
-                        <li class="navbar-nav__list">
                             <a class="navbar-nav__link" aria-current="page"
-                                   href="./../bookings/index.html">Bookings</a>
+                                href="./../../pages/login/index.html">Login</a>
                         </li>
                         <li class="navbar-nav__list">
-                            <a class="navbar-nav__link" aria-current="page" href="./../events/index.html">Event Planner</a>
+                            <a class="navbar-nav__link navbar-nav__link--active" aria-current="page"
+                                href="./index.html">Sign up</a>
+                        </li>
+                        <li class="navbar-nav__list">
+                            <a class="navbar-nav__link" aria-current="page" href="./../bookings/index.html">Bookings</a>
+                        </li>
+                        <li class="navbar-nav__list">
+                            <a class="navbar-nav__link" aria-current="page" href="./../events/index.html">Event
+                                Planner</a>
                         </li>
                     </ul>
                 </div>
